@@ -6,9 +6,12 @@ public class AuthController : ControllerBase
 {
     private readonly IAuthService _authService;
 
-    public AuthController(IAuthService authService)
+    private readonly IMapper _mapper;
+
+    public AuthController(IAuthService authService, IMapper mapper)
     {
         _authService = authService;
+        _mapper = mapper;
     }
 
     [HttpPost]
@@ -17,14 +20,7 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var validRequest = request.IsValid();
-
-            if (!validRequest.IsValid)
-            {
-                return BadRequest(validRequest.ErrorMessage);
-            }
-
-            var userName = await _authService.RegisterUser(request.FullName, request.Password);
+            var userName = await _authService.RegisterUser(_mapper.Map<RegistrationDto>(request));
 
             return Ok(new RegistrationResponse()
             {

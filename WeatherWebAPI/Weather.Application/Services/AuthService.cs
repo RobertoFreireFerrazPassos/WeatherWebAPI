@@ -2,22 +2,19 @@
 
 public class AuthService : IAuthService
 {
-    public async Task<string> RegisterUser(string fullName, string password)
+    private readonly IMapper _mapper;
+
+    public AuthService(IMapper mapper)
     {
-        return GenerateUsername(fullName);
+        _mapper = mapper;
     }
 
-    private string GenerateUsername(string fullName)
+    public async Task<string> RegisterUser(RegistrationDto registration)
     {
-        var names = fullName.Split(' ');
-        var username = string.Empty;
+        var user = _mapper.Map<User>(registration);
 
-        username += names[0].Substring(0, 2).ToLower();
-        username += names[1].Substring(0, 2).ToLower();
+        user.GenerateName();
 
-        Random random = new Random();
-        username += random.Next(10000, 99999);
-
-        return username;
+        return user.Username;
     }
 }

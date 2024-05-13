@@ -7,5 +7,7 @@ public static class NativeDependencyInjector
         services.AddScoped<IAuthService,AuthService>();
 
         RegisterRedisCacheService.Register(services, appConfig.RedisCacheConfig);
+
+        services.AddAutoMapper(typeof(ConfigurationAppMapping));
     }
 }

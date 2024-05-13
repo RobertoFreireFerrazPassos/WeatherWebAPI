@@ -2,43 +2,38 @@
 
 public class RegistrationRequest
 {
-    public string FullName { get; set; }
+    [Required(ErrorMessage = "First name is required")]
+    [MinLength(2, ErrorMessage = "First name can not be shorter than 2 characters")]
+    [MaxLength(30, ErrorMessage = "First name can not be longer than 30 characters")]
+    public string Firstname { get; set; }
 
+    [Required(ErrorMessage = "First name is required")]
+    [MinLength(2, ErrorMessage = "First name can not be shorter than 2 characters")]
+    [MaxLength(100, ErrorMessage = "First name can not be longer than 100 characters")]
+    public string Lastname { get; set; }
+
+    [Required(ErrorMessage = "Email is required")]
+    [EmailAddress(ErrorMessage = "Email is invalid")]
+    public string Email { get; set; }
+
+    [Required(ErrorMessage = "Password is required")]
+    [MinLength(6, ErrorMessage = "Password can not be shorter than 6 characters")]
+    [MaxLength(20, ErrorMessage = "Password can not be longer than 20 characters")]
     public string Password { get; set; }
 
-    public (bool IsValid, string ErrorMessage) IsValid()
-    {
-        if (string.IsNullOrWhiteSpace(FullName) || string.IsNullOrWhiteSpace(Password))
-        {
-            return (false, "Full name and password are mandatory fields");
-        }
+    public string Address { get; set; }
 
-        foreach (var name in FullName.Split(' '))
-        {
-            foreach (var i in name)
-            {
-                if (!char.IsLetter(i))
-                {
-                    return (false, "Full name contains non-letter characters");
-                }
-            }
-        }
+    [Required(ErrorMessage = "Email is required")]
+    [DataType(DataType.Date, ErrorMessage = "Birthdate is invalid")]
+    public DateTime Birthdate { get; set; }
 
-        foreach (var i in Password)
-        {
-            if (!char.IsLetterOrDigit(i))
-            {
-                return (false, "Full name contains non-letter digit characters");
-            }
-        }
+    [Required(ErrorMessage = "Phone number is required")]
+    [MinLength(6, ErrorMessage = "Phone number can not be shorter than 6 characters")]
+    public string PhoneNumber { get; set; }
 
-        var names = FullName.Split(' ');
+    [Required(ErrorMessage = "Living country is required")]
+    public string LivingCountry { get; set; }
 
-        if (names.Length < 2)
-        {
-            return (false, "Full name has less than 2 names");
-        }
-
-        return (true, string.Empty);
-    }
+    [Required(ErrorMessage = "Citizen country is required")]
+    public string CitizenCountry { get; set; }
 }
