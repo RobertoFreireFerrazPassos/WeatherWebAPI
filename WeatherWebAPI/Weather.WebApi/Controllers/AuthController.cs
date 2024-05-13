@@ -4,17 +4,37 @@
 [Route("api")]
 public class AuthController : ControllerBase
 {
-    private readonly ICache _cache;
+    private readonly IAuthService _authService;
 
-    public AuthController(ICache cache)
+    public AuthController(IAuthService authService)
     {
-        _cache = cache;
+        _authService = authService;
     }
-    
-    [HttpGet]
-    public async Task<IActionResult> Register()
+
+    [HttpPost]
+    [Route("registration")]
+    public async Task<IActionResult> Register([FromBody] RegistrationRequest request)
     {
-        _cache.Set("1234","VAlueforKey123");
-        return Ok(_cache.Get("123"));
+        try
+        {
+            var validRequest = request.IsValid();
+
+            if (!validRequest.IsValid)
+            {
+                return BadRequest(validRequest.ErrorMessage);
+            }
+
+            var userName = await _authService.RegisterUser(request.FullName, request.Password);
+
+            return Ok(new RegistrationResponse()
+            {
+                UserName = userName,
+            });
+        }
+        catch (Exception ex)
+        {
+            //_log.LogError(ex.Message);
+            return BadRequest(ex.Message);
+        }
     }
 }

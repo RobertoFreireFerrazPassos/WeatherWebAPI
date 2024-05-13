@@ -2,4 +2,7 @@
 
 global using Weather.CrossCutting.IoC;
 
-global using Weather.Domain.Cache;
+global using Weather.Application.DataContracts.Requests;
+global using Weather.Application.DataContracts.Responses;
+
+global using Weather.Domain.Services;
