@@ -20,12 +20,17 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var userName = await _authService.RegisterUser(_mapper.Map<RegistrationDto>(request));
+            var result = await _authService.RegisterUser(_mapper.Map<RegistrationDto>(request));
 
-            return Ok(new RegistrationResponse()
+            if (result.IsSuccessful)
             {
-                UserName = userName,
-            });
+                return Ok(new RegistrationResponse()
+                {
+                    UserName = result.Data,
+                });
+            }
+
+            return BadRequest(result.ErrorMessage);
         }
         catch (Exception ex)
         {

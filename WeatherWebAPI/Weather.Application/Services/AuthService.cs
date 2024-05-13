@@ -1,6 +1,4 @@
-﻿using Weather.Domain.Clients;
-
-namespace Weather.Application.Services;
+﻿namespace Weather.Application.Services;
 
 public class AuthService : IAuthService
 {
@@ -14,14 +12,26 @@ public class AuthService : IAuthService
         _countriesClient = countriesClient;
     }
 
-    public async Task<string> RegisterUser(RegistrationDto registration)
+    public async Task<Response<string>> RegisterUser(RegistrationDto registration)
     {
         var user = _mapper.Map<User>(registration);
 
-        var iddRoot = await _countriesClient.GetCountryInfoAsync("MLT");
+        var countryResponse = await _countriesClient.GetCountryAsync(user.LivingCountry);
+
+        if (!countryResponse.IsSuccessful)
+        {
+            return new Response<string>(countryResponse.IsSuccessful, countryResponse.ErrorMessage);
+        }
+
+        var idd = countryResponse.Data[0].Idd;
+
+        if (!user.IsValidPhoneNumber(idd.Root + idd.Suffixes[0]))
+        {
+            return new Response<string>(false, "Phone number is not valid for the user living country");
+        }
 
         user.GenerateName();
 
-        return user.Username;
+        return new Response<string>(countryResponse.IsSuccessful, string.Empty, user.Username);
     }
 }

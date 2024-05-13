@@ -18,4 +18,9 @@ public class User
     {
         Username = Firstname.Substring(0, 2).ToLower() + Lastname.Substring(0, 2).ToLower() + (new Random()).Next(10000, 99999);
     }
+
+    public bool IsValidPhoneNumber(string idd)
+    {
+        return PhoneNumber.StartsWith(idd);
+    }
 }

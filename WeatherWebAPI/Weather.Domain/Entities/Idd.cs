@@ -1,4 +1,4 @@
-﻿namespace Weather.CountriesClient.DataContracts.Responses;
+﻿namespace Weather.Domain.Models;
 
 public class Idd
 {

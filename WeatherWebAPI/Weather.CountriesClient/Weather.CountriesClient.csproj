@@ -11,8 +11,4 @@
     <ProjectReference Include="..\Weather.Domain\Weather.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DataContracts\Requests\" />
-  </ItemGroup>
-
 </Project>

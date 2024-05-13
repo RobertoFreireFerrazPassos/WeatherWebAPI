@@ -20,3 +20,21 @@ Port: 5432
 Username: simha
 Password: Postgres2019!
 ```
+
+## swagger test
+
+Endpoint /api/registration
+
+```json
+{
+  "firstname": "Jack",
+  "lastname": "Doe",
+  "email": "user@example.com",
+  "password": "123456",
+  "address": "Bastions Valletta VLT 193",
+  "birthdate": "2004-01-12",
+  "phoneNumber": "+356 22915000",
+  "livingCountry": "MLT",
+  "citizenCountry": "MLT"
+}
+```

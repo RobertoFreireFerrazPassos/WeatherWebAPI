@@ -6,10 +6,8 @@ public class CountriesHttpClient : BaseHttpClient, ICountriesClient
     {
     }
 
-    public async Task<string> GetCountryInfoAsync(string countryCode)
+    public async Task<Response<List<Country>>> GetCountryAsync(string countryCode)
     {
-        var country = await GetAsync<List<Country>>($"?codes={countryCode}");
-
-        return country[0].Idd.Root;
+        return await GetAsync<List<Country>>($"?codes={countryCode}");
     }
 }
