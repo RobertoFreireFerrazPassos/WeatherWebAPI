@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.CrossCutting.IoC", 
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C05BF487-124E-4375-99FE-359AE38C86D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.Redis", "Weather.Redis\Weather.Redis.csproj", "{30C437B1-9968-4579-8741-498E7402D0F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{C05BF487-124E-4375-99FE-359AE38C86D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C05BF487-124E-4375-99FE-359AE38C86D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C05BF487-124E-4375-99FE-359AE38C86D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30C437B1-9968-4579-8741-498E7402D0F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30C437B1-9968-4579-8741-498E7402D0F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30C437B1-9968-4579-8741-498E7402D0F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30C437B1-9968-4579-8741-498E7402D0F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 		{DB16F0D0-12AC-4BF8-B7D0-EBB4E5CF123E} = {24D79AFC-BEA3-4C72-8E91-F5E841A03C12}
 		{1B157BBC-76DC-41C8-9A98-C4924D956907} = {774B7878-8897-4285-BDED-396BBEFE3BE6}
 		{0A6115E6-9624-401F-A5BB-2C19335E0AB6} = {25D8CEE3-5F7C-4ABF-AE2B-E4D98E5940AF}
+		{30C437B1-9968-4579-8741-498E7402D0F5} = {25D8CEE3-5F7C-4ABF-AE2B-E4D98E5940AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5096EF98-5271-4B4B-8853-BFF7EF2A14BD}

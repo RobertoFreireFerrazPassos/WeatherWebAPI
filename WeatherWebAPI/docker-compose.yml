@@ -6,3 +6,11 @@ services:
     build:
       context: .
       dockerfile: Weather.WebApi/Dockerfile
+    depends_on:
+      - "redisdb"
+
+  redisdb:
+    image: redis
+    container_name: redisdb
+    ports:
+      - "6379:6379"
