@@ -9,3 +9,5 @@ global using Weather.Application.DataContracts.Responses;
 
 global using Weather.Domain.Dtos;
 global using Weather.Domain.Services;
+
+global using Weather.Redis;

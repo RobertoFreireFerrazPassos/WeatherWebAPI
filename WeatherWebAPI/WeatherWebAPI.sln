@@ -21,6 +21,10 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.Redis", "Weather.Redis\Weather.Redis.csproj", "{30C437B1-9968-4579-8741-498E7402D0F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.CountriesClient", "Weather.CountriesClient\Weather.CountriesClient.csproj", "{841F8D82-6FE1-4AEF-917D-F20765D64DA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.BaseClient", "Weather.BaseClient\Weather.BaseClient.csproj", "{F6FD8F25-97A5-41CC-8FE0-1C01715C2F7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{30C437B1-9968-4579-8741-498E7402D0F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30C437B1-9968-4579-8741-498E7402D0F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30C437B1-9968-4579-8741-498E7402D0F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{841F8D82-6FE1-4AEF-917D-F20765D64DA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{841F8D82-6FE1-4AEF-917D-F20765D64DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{841F8D82-6FE1-4AEF-917D-F20765D64DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{841F8D82-6FE1-4AEF-917D-F20765D64DA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6FD8F25-97A5-41CC-8FE0-1C01715C2F7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6FD8F25-97A5-41CC-8FE0-1C01715C2F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6FD8F25-97A5-41CC-8FE0-1C01715C2F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6FD8F25-97A5-41CC-8FE0-1C01715C2F7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +73,8 @@ Global
 		{1B157BBC-76DC-41C8-9A98-C4924D956907} = {774B7878-8897-4285-BDED-396BBEFE3BE6}
 		{0A6115E6-9624-401F-A5BB-2C19335E0AB6} = {25D8CEE3-5F7C-4ABF-AE2B-E4D98E5940AF}
 		{30C437B1-9968-4579-8741-498E7402D0F5} = {25D8CEE3-5F7C-4ABF-AE2B-E4D98E5940AF}
+		{841F8D82-6FE1-4AEF-917D-F20765D64DA7} = {25D8CEE3-5F7C-4ABF-AE2B-E4D98E5940AF}
+		{F6FD8F25-97A5-41CC-8FE0-1C01715C2F7D} = {25D8CEE3-5F7C-4ABF-AE2B-E4D98E5940AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5096EF98-5271-4B4B-8853-BFF7EF2A14BD}

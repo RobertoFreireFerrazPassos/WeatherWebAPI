@@ -9,5 +9,8 @@ public static class NativeDependencyInjector
         RegisterRedisCacheService.Register(services, appConfig.RedisCacheConfig);
 
         services.AddAutoMapper(typeof(ConfigurationAppMapping));
+
+        services.AddHttpClient<ICountriesClient, CountriesHttpClient>()
+            .ConfigureHttpClient(c => c.BaseAddress = new Uri(appConfig.RestCountriesApi.Url));
     }
 }
