@@ -15,11 +15,11 @@ public class RedisCache : ICache
          };
     }
 
-    public string Get(string key)
+    public async Task<string> Get(string key)
     {
         try
         {
-            return _database.GetString(key);
+            return await _database.GetStringAsync(key);
         }
         catch (Exception ex)
         {
@@ -28,11 +28,11 @@ public class RedisCache : ICache
         }
     }
 
-    public void Set(string key, string value)
+    public async Task Set(string key, string value)
     {
         try
         {
-            _database.SetString(key, value, _options);
+            await _database.SetStringAsync (key, value, _options);
         }
         catch (Exception ex)
         {

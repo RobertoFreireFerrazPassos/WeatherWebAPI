@@ -14,7 +14,7 @@ public class CacheCountriesMessageHandler : DelegatingHandler
         var query = HttpUtility.ParseQueryString(request.RequestUri.Query);
         var key = query[CountriesClientConstants.CountryCodeParameter];
         var cacheKey = CountriesClientConstants.CacheKey + key;
-        var cacheResponse = _cache.Get(cacheKey);
+        var cacheResponse = await _cache.Get(cacheKey);
 
         if (string.IsNullOrWhiteSpace(cacheResponse))
         {
@@ -24,7 +24,7 @@ public class CacheCountriesMessageHandler : DelegatingHandler
             {
                 var responseAsSring = await response.Content.ReadAsStringAsync();
 
-                _cache.Set(cacheKey, responseAsSring);
+                await _cache.Set(cacheKey, responseAsSring);
             }
 
             return response;

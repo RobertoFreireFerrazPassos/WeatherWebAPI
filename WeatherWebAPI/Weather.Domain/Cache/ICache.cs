@@ -2,7 +2,7 @@
 
 public interface ICache
 {
-    public string Get(string key);
+    public Task<string> Get(string key);
 
-    public void Set(string key, string value);
+    public Task Set(string key, string value);
 }
