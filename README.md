@@ -8,6 +8,8 @@ Run Docker Compose up
 PgAdmin for manage postgreSQL:
 http://localhost:16543/
 
+![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/fb834a71-ba81-4a49-87fc-eb45ace34ca7)
+
 Login
 
 ```
