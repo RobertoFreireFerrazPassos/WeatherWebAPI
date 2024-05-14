@@ -30,6 +30,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 builder.Services.Configure<RedisCacheConfig>(builder.Configuration.GetSection("Configuration:RedisCacheConfig"));
 builder.Services.Configure<DbConfig>(builder.Configuration.GetSection("Configuration:WeatherDb"));
+builder.Services.Configure<ApiConfig>(builder.Configuration.GetSection("Configuration:OpenWeather"));
 builder.Services.RegisterServices(builder.Configuration.GetSection("Configuration").Get<AppConfig>());
 
 builder.Services.AddAuthentication("BasicAuthentication")

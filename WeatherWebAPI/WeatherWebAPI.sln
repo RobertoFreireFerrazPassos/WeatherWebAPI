@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.DataAccess", "Weath
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.Security", "Weather.Security\Weather.Security.csproj", "{D6F5C84F-C2D5-4127-99C4-0CFBEB12B968}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.OpenWeatherClient", "Weather.OpenWeatherClient\Weather.OpenWeatherClient.csproj", "{D0641D4B-C29D-4BB5-A72F-D3553C6DAA08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{D6F5C84F-C2D5-4127-99C4-0CFBEB12B968}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6F5C84F-C2D5-4127-99C4-0CFBEB12B968}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6F5C84F-C2D5-4127-99C4-0CFBEB12B968}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0641D4B-C29D-4BB5-A72F-D3553C6DAA08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0641D4B-C29D-4BB5-A72F-D3553C6DAA08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0641D4B-C29D-4BB5-A72F-D3553C6DAA08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0641D4B-C29D-4BB5-A72F-D3553C6DAA08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +95,7 @@ Global
 		{F6FD8F25-97A5-41CC-8FE0-1C01715C2F7D} = {25D8CEE3-5F7C-4ABF-AE2B-E4D98E5940AF}
 		{C920D162-B366-4A68-B4FD-6D8DC291472D} = {25D8CEE3-5F7C-4ABF-AE2B-E4D98E5940AF}
 		{D6F5C84F-C2D5-4127-99C4-0CFBEB12B968} = {25D8CEE3-5F7C-4ABF-AE2B-E4D98E5940AF}
+		{D0641D4B-C29D-4BB5-A72F-D3553C6DAA08} = {25D8CEE3-5F7C-4ABF-AE2B-E4D98E5940AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5096EF98-5271-4B4B-8853-BFF7EF2A14BD}

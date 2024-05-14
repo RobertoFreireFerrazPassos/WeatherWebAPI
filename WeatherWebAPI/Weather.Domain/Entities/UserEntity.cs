@@ -1,6 +1,6 @@
 ﻿namespace Weather.Domain.Entities;
 
-public class User : Entity
+public class UserEntity : Entity
 {
     public string Firstname { get; set; }
     public string Lastname { get; set; }
@@ -21,5 +21,10 @@ public class User : Entity
     public bool IsValidPhoneNumber(string idd)
     {
         return PhoneNumber.StartsWith(idd);
+    }
+
+    public string GetLocation()
+    {
+        return LivingCountry;
     }
 }

@@ -6,13 +6,13 @@ public class UserRepository : Repository, IUserRepository
     {
     }
 
-    public async Task<Response<IEnumerable<User>>> GetAllAsync()
+    public async Task<Response<IEnumerable<UserEntity>>> GetAllAsync()
     {
         var sql = @"SELECT * FROM Users";
-        return await QueryAsync<User>(sql);
+        return await QueryAsync<UserEntity>(sql);
     }
 
-    public async Task<ResponseWithoutData> CreateAsync(User user)
+    public async Task<ResponseWithoutData> CreateAsync(UserEntity user)
     {
         user.Id = Guid.NewGuid();
         var sql = @"
@@ -22,12 +22,12 @@ public class UserRepository : Repository, IUserRepository
         return await ExecuteAsync(sql, user);
     }
 
-    public async Task<Response<User>> GetByEmailOrUserNameAsync(string email, string userName)
+    public async Task<Response<UserEntity>> GetByEmailOrUserNameAsync(string email, string userName)
     {
         var sql = @"
             SELECT Id, Firstname, Lastname, Username, Email, PasswordHash, Address, Birthdate, PhoneNumber, LivingCountry, CitizenCountry FROM Users 
             WHERE Email = @email Or Username = @userName
         ";
-        return await QuerySingleOrDefaultAsync<User>(sql, new { email, userName });
+        return await QuerySingleOrDefaultAsync<UserEntity>(sql, new { email, userName });
     }
 }

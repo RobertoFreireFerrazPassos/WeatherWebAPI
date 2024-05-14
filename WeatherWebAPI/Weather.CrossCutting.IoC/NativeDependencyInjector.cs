@@ -18,6 +18,9 @@ public static class NativeDependencyInjector
             .ConfigureHttpClient(c => c.BaseAddress = new Uri(appConfig.RestCountriesApi.Url))
             .AddHttpMessageHandler<CacheCountriesMessageHandler>()
             .AddPolicyHandler(GetCircuitBreakerPolicy());
+
+        services.AddHttpClient<IWeatherClient, OpenWeatherHttpClient>()
+            .ConfigureHttpClient(c => c.BaseAddress = new Uri(appConfig.OpenWeather.Url));
     }
 
     public static IAsyncPolicy<HttpResponseMessage> GetCircuitBreakerPolicy()

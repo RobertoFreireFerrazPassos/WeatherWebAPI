@@ -2,9 +2,9 @@
 
 public interface IUserRepository
 {
-    Task<Response<IEnumerable<User>>> GetAllAsync();
+    Task<Response<IEnumerable<UserEntity>>> GetAllAsync();
 
-    Task<ResponseWithoutData> CreateAsync(User user);
+    Task<ResponseWithoutData> CreateAsync(UserEntity user);
 
-    Task<Response<User>> GetByEmailOrUserNameAsync(string email, string userName);
+    Task<Response<UserEntity>> GetByEmailOrUserNameAsync(string email, string userName);
 }

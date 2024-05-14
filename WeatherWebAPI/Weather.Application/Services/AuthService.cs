@@ -17,9 +17,9 @@ public class AuthService : IAuthService
 
     public async Task<Response<string>> RegisterUserAsync(RegistrationDto registration)
     {
-        var user = _mapper.Map<User>(registration);
+        var user = _mapper.Map<UserEntity>(registration);
 
-        var countryResponse = await _countriesClient.GetCountryAsync(user.LivingCountry);
+        var countryResponse = await _countriesClient.GetCountryAsync(user.GetLocation());
 
         if (!countryResponse.IsSuccessful)
         {

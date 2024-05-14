@@ -2,5 +2,5 @@
 
 public interface IWeatherService
 {
-    Task<Response<bool>> GetWeatherAsync(string username);
+    Task<Response<CityWeather>> GetWeatherAsync(string username);
 }

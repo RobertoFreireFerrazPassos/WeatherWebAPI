@@ -29,7 +29,7 @@ public class WeatherController : ControllerBase
 
             if (result.IsSuccessful)
             {
-                return Ok(result);
+                return Ok(result.Data);
             }
 
             return BadRequest(result.ErrorMessage);

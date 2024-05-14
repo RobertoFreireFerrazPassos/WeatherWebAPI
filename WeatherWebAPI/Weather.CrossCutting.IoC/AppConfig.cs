@@ -6,5 +6,7 @@ public class AppConfig
 
     public ApiConfig RestCountriesApi { get; set;}
 
+    public ApiConfig OpenWeather { get; set; }
+
     public DbConfig WeatherDb { get; set; }
 }
