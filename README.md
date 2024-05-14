@@ -76,6 +76,18 @@ Replace appSettings url for testing CircuitBreaker
 
 Stop only 'redisdb' container to test resiliency of the system
 
+Added GlobalErrorHandlerMiddleware.
+
+If there is no try catch to handle an exception, the global error handler will handle the issue. 
+
+Example below when the application tried to insert a new row in Users table.
+
+```json
+{
+  "message": "23505: duplicate key value violates unique constraint \"users_email_key\"\n\nDETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information."
+}
+```
+
 ## Notes
 
 - Added Cache for restcountries Api for extra resiliency in case this api is down.
