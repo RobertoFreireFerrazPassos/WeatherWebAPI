@@ -33,6 +33,10 @@ public class AuthService : IAuthService
             return new Response<string>(false, "Phone number is not valid for the user living country");
         }
 
+        var (passwordHash, salt) = HashUtil.GenerateHashPasswordAndSalt(registration.Password);
+
+        user.PasswordHash = passwordHash;
+        user.Salt = salt;
         user.GenerateName();
 
         var userFromDbResponse = await _userRepository.GetByEmailOrUserNameAsync(user.Email, user.Username);

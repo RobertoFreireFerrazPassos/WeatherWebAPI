@@ -9,3 +9,5 @@ global using Weather.Domain.Repositories;
 global using Weather.Domain.Services;
 
 global using Weather.Application.DataContracts.Requests;
+
+global using Weather.Security;
