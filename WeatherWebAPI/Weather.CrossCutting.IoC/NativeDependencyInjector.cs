@@ -13,6 +13,14 @@ public static class NativeDependencyInjector
         services.AddScoped<CacheCountriesMessageHandler>();
         services.AddHttpClient<ICountriesClient, CountriesHttpClient>()
             .ConfigureHttpClient(c => c.BaseAddress = new Uri(appConfig.RestCountriesApi.Url))
-            .AddHttpMessageHandler<CacheCountriesMessageHandler>();
+            .AddHttpMessageHandler<CacheCountriesMessageHandler>()
+            .AddPolicyHandler(GetCircuitBreakerPolicy());
+    }
+
+    public static IAsyncPolicy<HttpResponseMessage> GetCircuitBreakerPolicy()
+    {
+        return HttpPolicyExtensions
+            .HandleTransientHttpError()
+            .CircuitBreakerAsync(5, TimeSpan.FromSeconds(30));
     }
 }

@@ -1,5 +1,8 @@
 ﻿global using Microsoft.Extensions.DependencyInjection;
 
+global using Polly;
+global using Polly.Extensions.Http;
+
 global using Weather.Application.Map;
 global using Weather.Application.Services;
 

@@ -38,3 +38,11 @@ Endpoint /api/registration
   "citizenCountry": "MLT"
 }
 ```
+
+Replace appSettings url for testing CircuitBreaker
+
+```json
+"RestCountriesApi": {
+   "Url": "https://httpstat.us/500"
+}
+```
