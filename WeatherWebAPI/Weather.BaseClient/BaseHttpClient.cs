@@ -24,7 +24,7 @@ public class BaseHttpClient
 
                 if (result is not null)
                 {
-                    return new Response<T>(true, string.Empty, result);
+                    return new Response<T>(true, data: result);
                 }
 
                 return new Response<T>(false, "Error during deserialization");

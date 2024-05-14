@@ -20,7 +20,7 @@ public class Repository
         {
             using var connection = CreateConnection();
             var result = await connection.QueryAsync<T>(sql);
-            return new Response<IEnumerable<T>>(true, string.Empty, result);
+            return new Response<IEnumerable<T>>(true, data: result);
         }
         catch (SocketException ex)
         {
@@ -56,7 +56,7 @@ public class Repository
         {
             using var connection = CreateConnection();
             var result = await connection.QuerySingleOrDefaultAsync<T>(sql, data);
-            return new Response<T>(true, string.Empty, result);
+            return new Response<T>(true, data: result);
         }
         catch (SocketException ex)
         {
