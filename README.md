@@ -47,6 +47,8 @@ Replace appSettings url for testing CircuitBreaker
 }
 ```
 
+Stop only 'redisdb' container to test resiliency of the system
+
 ## Notes
 
 - Added Cache for restcountries Api for extra resiliency in case this api is down.
