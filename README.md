@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS Users (
   "citizenCountry": "MLT"
 }
 ```
-- Authenticate registered user
+- Authorize registered user
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/6395e800-c583-49cb-b262-3f46e4d33b02)
 
