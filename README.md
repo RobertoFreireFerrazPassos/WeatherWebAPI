@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS Users (
 
 ## Swagger test
 
-Endpoint /api/registration
+- Endpoint /api/registration
 
 ```json
 {
@@ -65,6 +65,11 @@ Endpoint /api/registration
   "citizenCountry": "MLT"
 }
 ```
+- Authenticate registered user
+
+![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/6395e800-c583-49cb-b262-3f46e4d33b02)
+
+- Endpoint /api/login
 
 
 ## Resiliency tests
