@@ -10,7 +10,9 @@ public static class NativeDependencyInjector
 
         services.AddAutoMapper(typeof(ConfigurationAppMapping));
 
+        services.AddScoped<CacheCountriesMessageHandler>();
         services.AddHttpClient<ICountriesClient, CountriesHttpClient>()
-            .ConfigureHttpClient(c => c.BaseAddress = new Uri(appConfig.RestCountriesApi.Url));
+            .ConfigureHttpClient(c => c.BaseAddress = new Uri(appConfig.RestCountriesApi.Url))
+            .AddHttpMessageHandler<CacheCountriesMessageHandler>();
     }
 }
