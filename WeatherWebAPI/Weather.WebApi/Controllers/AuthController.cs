@@ -20,7 +20,7 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var result = await _authService.RegisterUser(_mapper.Map<RegistrationDto>(request));
+            var result = await _authService.RegisterUserAsync(_mapper.Map<RegistrationDto>(request));
 
             if (result.IsSuccessful)
             {

@@ -15,7 +15,7 @@ public class AuthService : IAuthService
         _userRepository = userRepository;
     }
 
-    public async Task<Response<string>> RegisterUser(RegistrationDto registration)
+    public async Task<Response<string>> RegisterUserAsync(RegistrationDto registration)
     {
         var user = _mapper.Map<User>(registration);
 
