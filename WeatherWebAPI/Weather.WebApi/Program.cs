@@ -7,6 +7,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.Configure<RedisCacheConfig>(builder.Configuration.GetSection("Configuration:RedisCacheConfig"));
+builder.Services.Configure<DbConfig>(builder.Configuration.GetSection("Configuration:WeatherDb"));
 builder.Services.RegisterServices(builder.Configuration.GetSection("Configuration").Get<AppConfig>());
 
 var app = builder.Build();

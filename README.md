@@ -8,7 +8,12 @@ Run Docker Compose up
 PgAdmin for manage postgreSQL:
 http://localhost:16543/
 
-look at docker compose file for PgAdmin authentication
+Login
+
+```
+Email: roberto@yahoo.com.br
+Password: PgAdmin2019!
+```
 
 Click in Add new server
 
@@ -19,6 +24,26 @@ Maintenance database: weather
 Port: 5432
 Username: simha
 Password: Postgres2019!
+```
+
+Right click on 'weather' database and select "Query tool"
+
+Create Users table
+
+```sql
+CREATE TABLE IF NOT EXISTS Users (
+    Id UUID PRIMARY KEY,
+    Firstname VARCHAR(100),
+    Lastname VARCHAR(100),
+    Username VARCHAR(100) UNIQUE,
+    Email VARCHAR(100) UNIQUE,
+    Password VARCHAR(255),
+    Address TEXT,
+    Birthdate DATE,
+    PhoneNumber VARCHAR(20),
+    LivingCountry VARCHAR(100),
+    CitizenCountry VARCHAR(100)
+);
 ```
 
 ## swagger test

@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Weather.Application\Weather.Application.csproj" />
     <ProjectReference Include="..\Weather.BaseClient\Weather.BaseClient.csproj" />
     <ProjectReference Include="..\Weather.CountriesClient\Weather.CountriesClient.csproj" />
+    <ProjectReference Include="..\Weather.DataAccess\Weather.DataAccess.csproj" />
     <ProjectReference Include="..\Weather.Redis\Weather.Redis.csproj" />
   </ItemGroup>
 

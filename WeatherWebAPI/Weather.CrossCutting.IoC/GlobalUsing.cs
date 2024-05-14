@@ -10,7 +10,11 @@ global using Weather.BaseClient;
 
 global using Weather.CountriesClient;
 
+global using Weather.DataAccess;
+global using Weather.DataAccess.Repositories;
+
 global using Weather.Domain.Clients;
+global using Weather.Domain.Repositories;
 global using Weather.Domain.Services;
 
 global using Weather.Redis;

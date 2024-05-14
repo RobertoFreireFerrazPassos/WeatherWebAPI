@@ -5,6 +5,7 @@ public static class NativeDependencyInjector
     public static void RegisterServices(this IServiceCollection services, AppConfig appConfig)
     {
         services.AddScoped<IAuthService,AuthService>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         RegisterRedisCacheService.Register(services, appConfig.RedisCacheConfig);
 

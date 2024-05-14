@@ -1,8 +1,7 @@
 ﻿namespace Weather.Domain.Entities;
 
-public class User
+public class User : Entity
 {
-    public Guid Id { get; set; }
     public string Firstname { get; set; }
     public string Lastname { get; set; }
     public string Username { get; set; }
