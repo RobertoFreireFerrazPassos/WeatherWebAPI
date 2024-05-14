@@ -35,14 +35,24 @@ public class AuthService : IAuthService
 
         user.GenerateName();
 
-        var userFromDb = await _userRepository.GetByEmailOrUserNameAsync(user.Email, user.Username);
+        var userFromDbResponse = await _userRepository.GetByEmailOrUserNameAsync(user.Email, user.Username);
 
-        if (userFromDb is not null)
+        if (!userFromDbResponse.IsSuccessful)
+        {
+            return new Response<string>(false, userFromDbResponse.ErrorMessage);
+        }
+
+        if (userFromDbResponse.Data is not null)
         {
             return new Response<string>(false, "A user with same email or username already exists");
         }
 
-        await _userRepository.CreateAsync(user);
+        var createUserResponse = await _userRepository.CreateAsync(user);
+
+        if (!createUserResponse.IsSuccessful)
+        {
+            return new Response<string>(false, createUserResponse.ErrorMessage);
+        }
 
         return new Response<string>(countryResponse.IsSuccessful, string.Empty, user.Username);
     }

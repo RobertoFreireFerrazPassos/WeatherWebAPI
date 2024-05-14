@@ -76,9 +76,9 @@ Replace appSettings url for testing CircuitBreaker
 
 Stop only 'redisdb' container to test resiliency of the system
 
-Added GlobalErrorHandlerMiddleware.
+Stop only 'postgres-db' container to test resiliency of the system
 
-If there is no try catch to handle an exception, the global error handler will handle the issue. 
+Added GlobalErrorHandlerMiddleware. If there is no try catch to handle an exception, the global error handler will handle the issue. 
 
 Example below when the application tried to insert a new row in Users table.
 
