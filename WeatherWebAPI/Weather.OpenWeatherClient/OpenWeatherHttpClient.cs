@@ -11,6 +11,6 @@ public class OpenWeatherHttpClient : BaseHttpClient, IWeatherClient
 
     public async Task<Response<CityWeather>> GetWeatherAsync(double lat, double lon)
     {
-        return await GetAsync<CityWeather>($"?lat={lat}&lon={lon}&APPID={_appId}");
+        return await GetAsync<CityWeather>($"?{OpenWeatherConstants.LatCodeParameter}={lat}&{OpenWeatherConstants.LngCodeParameter}={lon}&APPID={_appId}");
     }
 }
