@@ -34,7 +34,7 @@ public class AuthController : ControllerBase
         }
         catch (Exception ex)
         {
-            //_log.LogError(ex.Message);
+            //LogError
             return BadRequest(ex.Message);
         }
     }

@@ -17,11 +17,27 @@ public class RedisCache : ICache
 
     public string Get(string key)
     {
-        return _database.GetString(key);
+        try
+        {
+            return _database.GetString(key);
+        }
+        catch (Exception ex)
+        {
+            //LogError
+            return string.Empty;
+        }
     }
 
     public void Set(string key, string value)
     {
-        _database.SetString(key, value, _options);
+        try
+        {
+            _database.SetString(key, value, _options);
+        }
+        catch (Exception ex)
+        {
+            //LogError
+            return;
+        }
     }
 }
