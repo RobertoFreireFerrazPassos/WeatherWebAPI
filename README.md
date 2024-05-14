@@ -40,7 +40,6 @@ CREATE TABLE IF NOT EXISTS Users (
     Username VARCHAR(100) UNIQUE,
     Email VARCHAR(100) UNIQUE,
     PasswordHash VARCHAR(255),
-    Salt VARCHAR(10),
     Address TEXT,
     Birthdate DATE,
     PhoneNumber VARCHAR(20),

@@ -38,4 +38,20 @@ public class AuthController : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
+    [Authorize]
+    [HttpPost]
+    [Route("login")]
+    public async Task<IActionResult> Login()
+    {
+        try
+        {
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            //LogError
+            return BadRequest(ex.Message);
+        }
+    }
 }

@@ -2,30 +2,13 @@
 
 public static class HashUtil
 {
-    public static (string PasswordHash, string Salt) GenerateHashPasswordAndSalt(string password)
+    public static string GeneratePasswordHash(string password)
     {
-        var salt = GenerateSalt();
-        var passwordHash = HashPassword(password+ salt);
-
-        return (passwordHash, salt);
+        return HashPassword(password);
     }
 
-    public static bool IsValidPassword(string password, string salt, string passwordHash)
+    public static bool IsValidPassword(string password, string passwordHash)
     {
-        return passwordHash == HashPassword(password + salt);
-    }
-
-    private static string GenerateSalt()
-    {
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        var random = new Random();
-        var saltBuilder = new StringBuilder();
-
-        for (int i = 0; i < 5; i++)
-        {
-            saltBuilder.Append(chars[random.Next(chars.Length)]);
-        }
-
-        return saltBuilder.ToString();
+        return Verify(password, passwordHash);
     }
 }

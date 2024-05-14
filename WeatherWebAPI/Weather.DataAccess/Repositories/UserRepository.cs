@@ -16,8 +16,8 @@ public class UserRepository : Repository, IUserRepository
     {
         user.Id = Guid.NewGuid();
         var sql = @"
-            INSERT INTO Users (Id, Firstname, Lastname, Username, Email, PasswordHash, Salt, Address, Birthdate, PhoneNumber, LivingCountry, CitizenCountry)
-            VALUES (@Id, @Firstname, @Lastname, @Username, @Email, @PasswordHash, @Salt, @Address, @Birthdate, @PhoneNumber, @LivingCountry, @CitizenCountry)
+            INSERT INTO Users (Id, Firstname, Lastname, Username, Email, PasswordHash, Address, Birthdate, PhoneNumber, LivingCountry, CitizenCountry)
+            VALUES (@Id, @Firstname, @Lastname, @Username, @Email, @PasswordHash, @Address, @Birthdate, @PhoneNumber, @LivingCountry, @CitizenCountry)
         ";
         return await ExecuteAsync(sql, user);
     }
@@ -25,7 +25,7 @@ public class UserRepository : Repository, IUserRepository
     public async Task<Response<User>> GetByEmailOrUserNameAsync(string email, string userName)
     {
         var sql = @"
-            SELECT Id, Firstname, Lastname, Username, Email, PasswordHash, Salt, Address, Birthdate, PhoneNumber, LivingCountry, CitizenCountry FROM Users 
+            SELECT Id, Firstname, Lastname, Username, Email, PasswordHash, Address, Birthdate, PhoneNumber, LivingCountry, CitizenCountry FROM Users 
             WHERE Email = @email Or Username = @userName
         ";
         return await QuerySingleOrDefaultAsync<User>(sql, new { email, userName });
