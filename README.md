@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS Users (
 );
 ```
 
-## swagger test
+## Swagger test
 
 Endpoint /api/registration
 
@@ -66,14 +66,6 @@ Endpoint /api/registration
 }
 ```
 
-Replace appSettings url for testing CircuitBreaker
-
-```json
-"RestCountriesApi": {
-   "Url": "https://httpstat.us/500"
-}
-```
-
 
 ## Resiliency tests
 
@@ -82,6 +74,14 @@ Stop only 'redisdb' container
 Stop only 'postgres-db' container
 
 Stop 'redisdb' and 'postgres-db' containers
+
+Replace appSettings url for testing the circuit breaker
+
+```json
+"RestCountriesApi": {
+   "Url": "https://httpstat.us/500"
+}
+```
 
 
 ## Notes
