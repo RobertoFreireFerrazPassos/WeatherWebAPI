@@ -74,11 +74,21 @@ Replace appSettings url for testing CircuitBreaker
 }
 ```
 
-Stop only 'redisdb' container to test resiliency of the system
 
-Stop only 'postgres-db' container to test resiliency of the system
+## Resiliency tests
 
-Added GlobalErrorHandlerMiddleware. If there is no try catch to handle an exception, the global error handler will handle the issue. 
+Stop only 'redisdb' container
+
+Stop only 'postgres-db' container
+
+Stop 'redisdb' and 'postgres-db' containers
+
+
+## Notes
+
+- Added Cache for restcountries Api for extra resiliency in case this api is down.
+
+- Added GlobalErrorHandlerMiddleware. If there is no try catch to handle an exception, the global error handler will handle the issue. 
 
 Example below when the application tried to insert a new row in Users table.
 
@@ -87,7 +97,3 @@ Example below when the application tried to insert a new row in Users table.
   "message": "23505: duplicate key value violates unique constraint \"users_email_key\"\n\nDETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information."
 }
 ```
-
-## Notes
-
-- Added Cache for restcountries Api for extra resiliency in case this api is down.
