@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS Users (
 
 ## Swagger test
 
-- Endpoint /api/registration
+- Endpoint POST: /api/registration
 
 ```json
 {
@@ -76,6 +76,12 @@ Instead we are going to use the built-in UI modal in Swagger to automatically ad
 Unfortunatelly, Swagger is adding the authorization header for all endpoints, even for those which authorization is not required.
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/6395e800-c583-49cb-b262-3f46e4d33b02)
+
+- Endpoint GET: /api/weather
+
+The requirement is to get the weather conditions of the country where the user is registered in our system.
+
+Since this endpoint uses Basic Authorization, we don't need to pass /{username} in url.
 
 
 ## Resiliency tests
