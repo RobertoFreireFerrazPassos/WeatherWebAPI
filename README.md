@@ -67,9 +67,15 @@ CREATE TABLE IF NOT EXISTS Users (
 ```
 - Authorize registered user
 
-![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/6395e800-c583-49cb-b262-3f46e4d33b02)
+The requirement is to use Basic Authorization. It is not to implement a bearer/token authentication.
 
-- Endpoint /api/login
+We don't need to create an endpoint "/api/login" just to return a base64-encoded string username:password
+
+Instead we are going to use the built-in UI modal in Swagger to automatically add the authorization header
+
+Unfortunatelly, Swagger is adding the authorization header for all endpoints, even for those which authorization is not required.
+
+![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/6395e800-c583-49cb-b262-3f46e4d33b02)
 
 
 ## Resiliency tests
