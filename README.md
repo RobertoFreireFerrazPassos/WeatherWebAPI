@@ -46,3 +46,7 @@ Replace appSettings url for testing CircuitBreaker
    "Url": "https://httpstat.us/500"
 }
 ```
+
+## Notes
+
+- Added Cache for restcountries Api for extra resiliency in case this api is down.
