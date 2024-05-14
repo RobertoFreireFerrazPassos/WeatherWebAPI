@@ -25,7 +25,7 @@ public class AuthService : IAuthService
 
         var idd = countryResponse.Data[0].Idd;
 
-        if (!user.IsValidPhoneNumber(idd.Root + idd.Suffixes[0]))
+        if (idd.Suffixes.All(suffix => !user.IsValidPhoneNumber(idd.Root + suffix)))
         {
             return new Response<string>(false, "Phone number is not valid for the user living country");
         }
