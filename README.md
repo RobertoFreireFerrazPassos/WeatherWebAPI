@@ -79,9 +79,11 @@ Unfortunatelly, Swagger is adding the authorization header for all endpoints, ev
 
 - Endpoint GET: /api/weather
 
-The requirement is to get the weather conditions of the country where the user is registered in our system.
+The requirement is to get the weather conditions of the country for the user registered in our system.
 
 Since this endpoint uses Basic Authorization, we don't need to pass /{username} in url.
+
+/{username} in the url means that the user can add any username but this is not the requirement.
 
 
 ## Resiliency tests
