@@ -105,7 +105,7 @@ Replace appSettings url for testing the circuit breaker
 
 ## Notes
 
-- Added Cache for restcountries Api for extra resiliency in case this api is down.
+- Added also Cache for restcountries Api for extra resiliency in case this api is down.
 
 - Added GlobalErrorHandlerMiddleware. If there is no try catch to handle an exception, the global error handler will handle the issue. 
 
