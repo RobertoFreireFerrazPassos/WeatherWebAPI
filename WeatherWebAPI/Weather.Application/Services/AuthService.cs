@@ -6,10 +6,13 @@ public class AuthService : IAuthService
 
     private readonly ICountriesClient _countriesClient;
 
-    public AuthService(IMapper mapper, ICountriesClient countriesClient)
+    private readonly IUserRepository _userRepository;
+
+    public AuthService(IMapper mapper, ICountriesClient countriesClient, IUserRepository userRepository)
     {
         _mapper = mapper;
         _countriesClient = countriesClient;
+        _userRepository = userRepository;
     }
 
     public async Task<Response<string>> RegisterUser(RegistrationDto registration)
@@ -31,6 +34,15 @@ public class AuthService : IAuthService
         }
 
         user.GenerateName();
+
+        var userFromDb = await _userRepository.GetByEmailOrUserNameAsync(user.Email, user.Username);
+
+        if (userFromDb is not null)
+        {
+            return new Response<string>(false, "A user with same email or username already exists");
+        }
+
+        await _userRepository.CreateAsync(user);
 
         return new Response<string>(countryResponse.IsSuccessful, string.Empty, user.Username);
     }
