@@ -18,6 +18,13 @@ public class WeatherService : IWeatherService
             return new Response<bool>(false, userFromDbResponse.ErrorMessage);
         }
 
+        var location = userFromDbResponse.Data?.LivingCountry;
+
+        if (string.IsNullOrWhiteSpace(location))
+        {
+            return new Response<bool>(false, "User doesn't have a location");
+        }
+
         return new Response<bool>(true, string.Empty, true);
     }
 }
