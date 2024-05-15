@@ -210,4 +210,4 @@ https://github.com/BcryptNet/bcrypt.net
 
 ## Improvements
 
-- Add a health check endpoint testing the health of all the dependencies (databases, external apis and redis).
+- Add a health check endpoint to testing the health of all the dependencies (databases, external apis and redis).
