@@ -8,10 +8,10 @@
 
 ## Docker containers
 
-- postgres (database)
-- postgres (integration tests database)
+- postgres-db (database)
+- postgresit-db (integration tests database)
 - pgadmin (database management tool)
-- redis (distributed cache)
+- redisdb (distributed cache)
 - weather.webapi (web api project using net8.0 and swagger)
 
 ## Set up
@@ -20,29 +20,29 @@ Click on "Docker compose" in Visual Studio (useful for debugging web api in Visu
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/532e903a-ac05-49c0-8fad-479f7d12c221)
 
-Or run cmd "docker compose up" in folder that contains "docker-compose.yml" file.
+Or run cmd "docker compose up" in a folder that contains "docker-compose.yml" file.
 
 When containers are ready:
 
-Cmd console:
+- Cmd console
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/e81a31f2-f5e3-49b6-b649-905a63734ba0)
 
-Docker Desktop containers:
+- Docker Desktop containers:
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/ce485411-e014-49f0-a57e-b4b3fba07c59)
 
-Docker Desktop volumes:
+- Docker Desktop volumes:
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/6b241dd1-99fc-4430-aa61-21ea691993d7)
 
-Windows folder for volumes:
+- Windows folder for volumes:
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/4544ff87-4064-467e-ab4a-de166a05e09a)
 
 PgAdmin for manage postgreSQL: http://localhost:16543/
 
-It might take some time to load the PgAdmin for the first time.
+It might take some time to load the PgAdmin for the first time since PgAdmin depends on "postgres-db" and "postgresit-db".
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/fb834a71-ba81-4a49-87fc-eb45ace34ca7)
 
@@ -98,6 +98,12 @@ CREATE TABLE IF NOT EXISTS Users (
 ```
 
 ## Swagger test
+
+Swagger UI will open automatically if we are running docker compose from Visual Studio.
+
+If not, validate the port "52691" in the previous image in this document for "Docker Desktop containers".
+
+http://localhost:52691/swagger/index.html
 
 - Endpoint POST: /api/registration
 

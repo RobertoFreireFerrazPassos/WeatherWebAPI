@@ -49,3 +49,4 @@ services:
       - "16543:80"
     depends_on:
       - postgres-db
+      - postgresit-db
