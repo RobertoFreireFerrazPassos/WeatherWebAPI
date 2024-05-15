@@ -27,13 +27,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.BaseClient", "Weath
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.DataAccess", "Weather.DataAccess\Weather.DataAccess.csproj", "{C920D162-B366-4A68-B4FD-6D8DC291472D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.Security", "Weather.Security\Weather.Security.csproj", "{D6F5C84F-C2D5-4127-99C4-0CFBEB12B968}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.Security", "Weather.Security\Weather.Security.csproj", "{D6F5C84F-C2D5-4127-99C4-0CFBEB12B968}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.OpenWeatherClient", "Weather.OpenWeatherClient\Weather.OpenWeatherClient.csproj", "{D0641D4B-C29D-4BB5-A72F-D3553C6DAA08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.OpenWeatherClient", "Weather.OpenWeatherClient\Weather.OpenWeatherClient.csproj", "{D0641D4B-C29D-4BB5-A72F-D3553C6DAA08}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B20CB93C-118E-481C-9799-8859E730A12F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.Tests", "Weather.Tests\Weather.Tests.csproj", "{178909C6-FC98-4F12-AA19-4EAFB7D68C77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.Tests", "Weather.Tests\Weather.Tests.csproj", "{178909C6-FC98-4F12-AA19-4EAFB7D68C77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

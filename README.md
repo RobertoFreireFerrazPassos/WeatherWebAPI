@@ -1,23 +1,38 @@
 # WeatherWebAPI
 
+## Required Tools
+
+- Docker Desktop running Linux
+- Visual Studio 2022
+
+## Docker containers
+
+- postgres (database)
+- postgres (integration tests database)
+- pgadmin (database management tool)
+- redis (distributed cache)
+- weather.webapi (web api project using net8.0 and swagger)
 
 ## Set up
 
 Run Docker Compose up
 
-PgAdmin for manage postgreSQL:
-http://localhost:16543/
+PgAdmin for manage postgreSQL: http://localhost:16543/
+
+It might take some time to load the PgAdmin for the first time.
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/fb834a71-ba81-4a49-87fc-eb45ace34ca7)
 
 Login
 
 ```
-Email: roberto@yahoo.com.br
+Email: simha@yahoo.com.br
 Password: PgAdmin2019!
 ```
 
 Click in Add new server
+
+Use this information below for "general" and "connection" tabs in "Register - Server" modal:
 
 ```
 Server name: postgres-db
@@ -28,9 +43,20 @@ Username: simha
 Password: Postgres2019!
 ```
 
+For Integration Test database, use this:
+
+```
+Server name: postgresit-db
+Host Name: postgresit-db
+Maintenance database: weatherit
+Port: 5432
+Username: simha
+Password: Postgres2019!
+```
+
 Right click on 'weather' database and select "Query tool"
 
-Create Users table
+Create Users table for both databases: "weather" and "weatherit for integration tests
 
 ```sql
 CREATE TABLE IF NOT EXISTS Users (
@@ -85,8 +111,23 @@ Since this endpoint uses Basic Authorization, we don't need to pass /{username} 
 
 /{username} in the url means that the user can add any username but this is not the requirement.
 
+## Weather.Tests project
 
-## Resiliency tests
+Run tests using Visual studio.
+
+### Unit tests
+
+Classes ending with "Tests"
+
+Example: AuthServiceTests
+
+### Integration tests
+
+Classes ending with "IntegrationTests"
+
+Example: RepositoryIntegrationTests
+
+## Resilience/Fault tolerance tests
 
 Stop only 'redisdb' container
 
@@ -116,3 +157,7 @@ Example below when the application tried to insert a new row in Users table.
   "message": "23505: duplicate key value violates unique constraint \"users_email_key\"\n\nDETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information."
 }
 ```
+
+## Improvements
+
+- Add a health check endpoint testing the health of all the dependencies (databases, external apis and redis).
