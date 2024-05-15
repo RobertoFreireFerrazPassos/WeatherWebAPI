@@ -15,7 +15,11 @@
 
 ## Set up
 
-Run Docker Compose up
+Click on "Docker compose" in visual studio:
+
+![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/532e903a-ac05-49c0-8fad-479f7d12c221)
+
+Or Run Docker Compose up
 
 PgAdmin for manage postgreSQL: http://localhost:16543/
 
