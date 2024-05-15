@@ -15,11 +15,11 @@
 
 ## Set up
 
-Click on "Docker compose" in visual studio:
+Click on "Docker compose" in Visual Studio (useful to debug web api in Visual Studio)
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/532e903a-ac05-49c0-8fad-479f7d12c221)
 
-Or Run Docker Compose up
+Or run cmd "docker compose up" in folder that contains "docker-compose.yml" file.
 
 PgAdmin for manage postgreSQL: http://localhost:16543/
 
