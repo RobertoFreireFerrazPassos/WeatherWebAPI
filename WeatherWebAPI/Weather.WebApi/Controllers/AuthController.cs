@@ -24,10 +24,7 @@ public class AuthController : ControllerBase
 
             if (result.IsSuccessful)
             {
-                return Ok(new RegistrationResponse()
-                {
-                    UserName = result.Data,
-                });
+                return Ok(result.Data);
             }
 
             return BadRequest(result.ErrorMessage);

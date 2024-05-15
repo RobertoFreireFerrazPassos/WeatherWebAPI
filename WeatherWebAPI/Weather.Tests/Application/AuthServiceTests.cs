@@ -65,7 +65,8 @@ public class AuthServiceTests
         response.Should().NotBeNull();
         response.IsSuccessful.Should().BeTrue();
         response.ErrorMessage.Should().BeNullOrEmpty();
-        response.Data.Should().StartWith("jado");
+        response.Data.Should().NotBeNull();
+        response.Data.UserName.Should().StartWith("jado");
 
         _countriesClientMock.Verify(u => u.GetCountryAsync(It.IsAny<string>()), Times.Once);
         _userRepositoryMock.Verify(u => u.GetByEmailOrUserNameAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);

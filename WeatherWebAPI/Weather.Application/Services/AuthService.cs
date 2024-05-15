@@ -15,7 +15,7 @@ public class AuthService : IAuthService
         _userRepository = userRepository;
     }
 
-    public async Task<Response<string>> RegisterUserAsync(RegistrationDto registration)
+    public async Task<Response<RegistrationResponse>> RegisterUserAsync(RegistrationDto registration)
     {
         var user = _mapper.Map<UserEntity>(registration);
 
@@ -23,14 +23,14 @@ public class AuthService : IAuthService
 
         if (!countryResponse.IsSuccessful)
         {
-            return new Response<string>(countryResponse.IsSuccessful, countryResponse.ErrorMessage);
+            return new Response<RegistrationResponse>(countryResponse.IsSuccessful, countryResponse.ErrorMessage);
         }
 
         var idd = countryResponse.Data[0].Idd;
 
         if (idd.Suffixes.All(suffix => !user.IsValidPhoneNumber(idd.Root + suffix)))
         {
-            return new Response<string>(false, "Phone number is not valid for the user living country");
+            return new Response<RegistrationResponse>(false, "Phone number is not valid for the user living country");
         }
 
         user.PasswordHash = HashUtil.GeneratePasswordHash(registration.Password);
@@ -40,21 +40,24 @@ public class AuthService : IAuthService
 
         if (!userFromDbResponse.IsSuccessful)
         {
-            return new Response<string>(false, userFromDbResponse.ErrorMessage);
+            return new Response<RegistrationResponse>(false, userFromDbResponse.ErrorMessage);
         }
 
         if (userFromDbResponse.Data is not null)
         {
-            return new Response<string>(false, "A user with same email or username already exists");
+            return new Response<RegistrationResponse>(false, "A user with same email or username already exists");
         }
 
         var createUserResponse = await _userRepository.CreateAsync(user);
 
         if (!createUserResponse.IsSuccessful)
         {
-            return new Response<string>(false, createUserResponse.ErrorMessage);
+            return new Response<RegistrationResponse>(false, createUserResponse.ErrorMessage);
         }
 
-        return new Response<string>(countryResponse.IsSuccessful, string.Empty, user.Username);
+        return new Response<RegistrationResponse>(countryResponse.IsSuccessful, data : new RegistrationResponse()
+        {
+            UserName = user.Username,
+        });
     }
 }

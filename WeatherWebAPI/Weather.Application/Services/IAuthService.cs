@@ -2,5 +2,5 @@
 
 public interface IAuthService
 {
-    Task<Response<string>> RegisterUserAsync(RegistrationDto registration);
+    Task<Response<RegistrationResponse>> RegisterUserAsync(RegistrationDto registration);
 }
