@@ -2,7 +2,8 @@
 
 ## Required Tools
 
-- Docker Desktop running Linux
+- Computer with Windows OS
+- Docker Desktop application running Linux
 - Visual Studio 2022
 
 ## Docker containers
@@ -21,13 +22,21 @@ Click on "Docker compose" in Visual Studio (useful for debugging web api in Visu
 
 Or run cmd "docker compose up" in folder that contains "docker-compose.yml" file.
 
+When containers are ready:
+
+Cmd console:
+
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/e81a31f2-f5e3-49b6-b649-905a63734ba0)
+
+Docker Desktop containers:
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/ce485411-e014-49f0-a57e-b4b3fba07c59)
 
-![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/e70553f9-8f94-4fb2-8528-de7f4210c625)
+Docker Desktop volumes:
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/6b241dd1-99fc-4430-aa61-21ea691993d7)
+
+Windows folder for volumes:
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/4544ff87-4064-467e-ab4a-de166a05e09a)
 
@@ -171,6 +180,8 @@ Example below when the application tried to insert a new row in Users table.
   "message": "23505: duplicate key value violates unique constraint \"users_email_key\"\n\nDETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information."
 }
 ```
+
+- It is saving database docker volume in folder "C:\dockervolumes\postgresql". I didn't test in a different OS other than Windows.
 
 ## Improvements
 
