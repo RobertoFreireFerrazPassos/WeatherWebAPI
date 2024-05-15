@@ -92,7 +92,7 @@ Right click on 'weather' database and select "Query tool"
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/fb834a71-ba81-4a49-87fc-eb45ace34ca7)
 
-Create Users table for both databases: "weather" and "weatherit for integration tests
+Create Users table for both databases ("weather" and "weatherit for integration tests)
 
 ```sql
 CREATE TABLE IF NOT EXISTS Users (
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS Users (
 
 Swagger UI will open automatically if we are running docker compose from Visual Studio.
 
-If not, validate the port "52691" in the previous image in this document for "Docker Desktop containers".
+If not, validate the port "52691" in the previous "Docker Desktop containers" image for weather.webapi container.
 
 http://localhost:52691/swagger/index.html
 
