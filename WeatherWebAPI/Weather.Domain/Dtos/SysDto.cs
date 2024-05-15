@@ -1,6 +1,6 @@
-﻿namespace Weather.Domain.Models;
+﻿namespace Weather.Domain.Dtos;
 
-public class Sys
+public class SysDto
 {
     public int type { get; set; }
     public int id { get; set; }

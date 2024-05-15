@@ -1,6 +1,6 @@
-﻿namespace Weather.Domain.Models;
+﻿namespace Weather.Domain.Dtos;
 
-public class HistoricWeather
+public class HistoricWeatherDto
 {
     public string CountryCode { get; set; }
 

@@ -40,11 +40,11 @@ public class AuthServiceTests
             CitizenCountry = "MLT"
         };
 
-        var countryResponse = new Response<List<Country>>(true, data: new List<Country>
+        var countryResponse = new Response<List<CountryDto>>(true, data: new List<CountryDto>
         {
-            new Country
+            new CountryDto
             {
-                Idd = new Idd
+                Idd = new IddDto
                 {
                     Root = "+3",
                     Suffixes = new string[] { "56", "456" }

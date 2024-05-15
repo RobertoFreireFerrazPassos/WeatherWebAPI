@@ -1,6 +1,6 @@
-﻿namespace Weather.Domain.Models;
+﻿namespace Weather.Domain.Dtos;
 
-public class Wind
+public class WindDto
 {
     public float speed { get; set; }
     public int deg { get; set; }

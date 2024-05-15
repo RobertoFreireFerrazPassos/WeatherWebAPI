@@ -6,6 +6,6 @@ public class ConfigurationAppMapping : Profile
     {
         CreateMap<RegistrationRequest, RegistrationDto>();
         CreateMap<RegistrationDto, UserEntity>();
-        CreateMap<WeatherEntity, HistoricWeather>();        
+        CreateMap<WeatherEntity, HistoricWeatherDto>();        
     }
 }

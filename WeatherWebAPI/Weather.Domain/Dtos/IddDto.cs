@@ -1,6 +1,6 @@
-﻿namespace Weather.Domain.Models;
+﻿namespace Weather.Domain.Dtos;
 
-public class Idd
+public class IddDto
 {
     public string Root { get; set; }
 

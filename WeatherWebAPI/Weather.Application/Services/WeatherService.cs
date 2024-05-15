@@ -75,7 +75,7 @@ public class WeatherService : IWeatherService
 
         var userWeather = new UserWeatherResponse()
         {
-            HistoricalWeather = _mapper.Map<IEnumerable<HistoricWeather>>(historicalWeatherResponse.Data).ToList(),
+            HistoricalWeather = _mapper.Map<IEnumerable<HistoricWeatherDto>>(historicalWeatherResponse.Data).ToList(),
             CityWeather = cityWeatherResponse.Data
         };
 

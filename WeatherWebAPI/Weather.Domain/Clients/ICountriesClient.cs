@@ -2,5 +2,5 @@
 
 public interface ICountriesClient
 {
-    Task<Response<List<Country>>> GetCountryAsync(string countryCode);
+    Task<Response<List<CountryDto>>> GetCountryAsync(string countryCode);
 }

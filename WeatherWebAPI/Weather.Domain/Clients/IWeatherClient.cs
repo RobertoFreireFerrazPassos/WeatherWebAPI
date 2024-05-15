@@ -2,5 +2,5 @@
 
 public interface IWeatherClient
 {
-    Task<Response<CityWeather>> GetWeatherAsync(double lat, double lon);
+    Task<Response<CityWeatherDto>> GetWeatherAsync(double lat, double lon);
 }

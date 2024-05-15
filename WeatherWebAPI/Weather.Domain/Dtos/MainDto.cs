@@ -1,6 +1,6 @@
-﻿namespace Weather.Domain.Models;
+﻿namespace Weather.Domain.Dtos;
 
-public class Main
+public class MainDto
 {
     public float temp { get; set; }
     public float feels_like { get; set; }

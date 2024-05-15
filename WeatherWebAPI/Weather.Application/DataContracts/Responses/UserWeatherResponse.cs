@@ -2,7 +2,7 @@
 
 public class UserWeatherResponse
 {
-    public List<HistoricWeather> HistoricalWeather { get; set; }
+    public List<HistoricWeatherDto> HistoricalWeather { get; set; }
 
-    public CityWeather CityWeather  { get; set; }
+    public CityWeatherDto CityWeather  { get; set; }
 }
