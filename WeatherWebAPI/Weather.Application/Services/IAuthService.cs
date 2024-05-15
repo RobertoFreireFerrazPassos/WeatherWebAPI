@@ -1,4 +1,4 @@
-﻿namespace Weather.Domain.Services;
+﻿namespace Weather.Application.Services;
 
 public interface IAuthService
 {

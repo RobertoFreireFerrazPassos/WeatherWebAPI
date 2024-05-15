@@ -27,7 +27,6 @@ global using Weather.DataAccess;
 
 global using Weather.Domain.Dtos;
 global using Weather.Domain.Repositories;
-global using Weather.Domain.Services;
 
 global using Weather.Redis;
 
