@@ -244,6 +244,8 @@ Example below when the application tried to insert a new row in User table.
 
 - The documentation mentions no need to generate salt. "his implementation on hashing will generate a salt automatically for you"
 
+- Database Enrichment: It was added historical weather.
+
 https://github.com/BcryptNet/bcrypt.net
 
 ## Improvements
