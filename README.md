@@ -248,6 +248,8 @@ https://github.com/BcryptNet/bcrypt.net
 
 - Database Enrichment: It was added historical weather.
 
+- The database connection string and password are hardcoded in appsettings and RepositoryIntegrationTests. It is a security issue.
+
 ## To do next
 
 - Add a health check endpoint to test the health of all the dependencies: databases, external apis and redis.
