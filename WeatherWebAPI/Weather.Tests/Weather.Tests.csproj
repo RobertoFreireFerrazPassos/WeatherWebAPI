@@ -29,13 +29,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="WebApi\Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Weather.Application\Weather.Application.csproj" />
     <ProjectReference Include="..\Weather.DataAccess\Weather.DataAccess.csproj" />
     <ProjectReference Include="..\Weather.Domain\Weather.Domain.csproj" />
+    <ProjectReference Include="..\Weather.WebApi\Weather.WebApi.csproj" />
   </ItemGroup>
 
 </Project>
