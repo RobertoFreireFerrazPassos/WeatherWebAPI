@@ -248,6 +248,6 @@ https://github.com/BcryptNet/bcrypt.net
 
 - Database Enrichment: It was added historical weather.
 
-## Improvements
+## To do next
 
 - Add a health check endpoint to test the health of all the dependencies: databases, external apis and redis.
