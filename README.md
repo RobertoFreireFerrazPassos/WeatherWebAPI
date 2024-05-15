@@ -68,6 +68,8 @@ Use this information below for "general" and "connection" tabs in "Register - Se
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/26862b88-f397-4f41-8ce1-c2d8756d3955)
 
+For Weather database, use this:
+
 ```
 Server name: postgres-db
 Host Name: postgres-db
@@ -88,11 +90,11 @@ Username: simha
 Password: Postgres2019!
 ```
 
-Right click on 'weather' database and select "Query tool"
+Right click on 'weather' database, for example, and select "Query tool"
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/fb834a71-ba81-4a49-87fc-eb45ace34ca7)
 
-Create Users table for both databases ("weather" and "weatherit for integration tests)
+Create Users table for both databases
 
 ```sql
 CREATE TABLE IF NOT EXISTS Users (
@@ -114,7 +116,7 @@ CREATE TABLE IF NOT EXISTS Users (
 
 Swagger UI will open automatically if we are running docker compose from Visual Studio.
 
-If not, validate the port "52691" in the previous "Docker Desktop containers" image for weather.webapi container.
+If not, validate the port "52691" as shown in previous "Docker Desktop containers" image for weather.webapi container.
 
 http://localhost:52691/swagger/index.html
 
@@ -201,6 +203,10 @@ Example below when the application tried to insert a new row in Users table.
 ```
 
 - It is saving database docker volume in folder "C:\dockervolumes\postgresql". I didn't test in a different OS other than Windows.
+
+- The documentation mentions no need to generate salt. "his implementation on hashing will generate a salt automatically for you"
+
+https://github.com/BcryptNet/bcrypt.net
 
 ## Improvements
 
