@@ -16,6 +16,8 @@
 
 ## Set up
 
+### Docker compose
+
 Click on "Docker compose" in Visual Studio (useful for debugging web api in Visual Studio)
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/532e903a-ac05-49c0-8fad-479f7d12c221)
@@ -40,11 +42,13 @@ When containers are ready:
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/4544ff87-4064-467e-ab4a-de166a05e09a)
 
-PgAdmin for manage postgreSQL: http://localhost:16543/
+### Create tables for both databases
 
-It might take some time to load the PgAdmin for the first time since PgAdmin depends on "postgres-db" and "postgresit-db".
+#### PgAdmin 
 
-![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/fb834a71-ba81-4a49-87fc-eb45ace34ca7)
+http://localhost:16543/
+
+It might take some time to load the PgAdmin since it depends on "postgres-db" and "postgresit-db" containers to be ready.
 
 Login
 
@@ -53,7 +57,7 @@ Email: simha@yahoo.com.br
 Password: PgAdmin2019!
 ```
 
-Click in Add new server
+Click on add new server
 
 Use this information below for "general" and "connection" tabs in "Register - Server" modal:
 
@@ -78,6 +82,8 @@ Password: Postgres2019!
 ```
 
 Right click on 'weather' database and select "Query tool"
+
+![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/fb834a71-ba81-4a49-87fc-eb45ace34ca7)
 
 Create Users table for both databases: "weather" and "weatherit for integration tests
 
