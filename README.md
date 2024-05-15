@@ -57,9 +57,16 @@ Email: simha@yahoo.com.br
 Password: PgAdmin2019!
 ```
 
+![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/2a9d5cc2-465b-46b9-9d84-01901f53605b)
+
 Click on add new server
 
+![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/2482ce6d-5016-4e45-9748-9d7d845719e0)
+
+
 Use this information below for "general" and "connection" tabs in "Register - Server" modal:
+
+![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/26862b88-f397-4f41-8ce1-c2d8756d3955)
 
 ```
 Server name: postgres-db
