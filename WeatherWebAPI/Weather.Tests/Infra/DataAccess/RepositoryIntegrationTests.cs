@@ -22,7 +22,7 @@ public class RepositoryIntegrationTests
         var repository = new Repository(_dbConfigMock.Object);
 
         // Act
-        var response = await repository.QueryAsync<int>("SELECT COUNT(*) FROM User");
+        var response = await repository.QueryAsync<int>("SELECT COUNT(*) FROM UserRegistration");
 
         // Assert
         response.IsSuccessful.Should().BeTrue();
@@ -37,7 +37,7 @@ public class RepositoryIntegrationTests
         var repository = new Repository(_dbConfigMock.Object);
 
         // Act
-        var response = await repository.QueryAsync<int>("SELECT COUNT(*) FROM User");
+        var response = await repository.QueryAsync<int>("SELECT COUNT(*) FROM UserRegistration");
 
         // Assert
         response.IsSuccessful.Should().BeFalse();

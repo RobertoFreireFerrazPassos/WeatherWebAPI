@@ -97,7 +97,7 @@ Right click on 'weather' database, for example, and select "Query tool"
 Create User table for both databases
 
 ```sql
-CREATE TABLE IF NOT EXISTS User (
+CREATE TABLE IF NOT EXISTS UserRegistration (
     Id UUID PRIMARY KEY,
     Firstname VARCHAR(100),
     Lastname VARCHAR(100),
