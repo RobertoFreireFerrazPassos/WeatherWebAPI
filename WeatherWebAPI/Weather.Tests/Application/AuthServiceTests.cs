@@ -69,7 +69,10 @@ public class AuthServiceTests
 
         _countriesClientMock.Verify(u => u.GetCountryAsync(It.IsAny<string>()), Times.Once);
         _userRepositoryMock.Verify(u => u.GetByEmailOrUserNameAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
-        _userRepositoryMock.Verify(u => u.CreateAsync(It.IsAny<UserEntity>()), Times.Once);
+        _userRepositoryMock.Verify(u => u.CreateAsync(It.Is<UserEntity>(u =>
+            u.Username.StartsWith("jado")
+            && !string.IsNullOrWhiteSpace(u.PasswordHash)
+        )), Times.Once);
     }
 }
 
