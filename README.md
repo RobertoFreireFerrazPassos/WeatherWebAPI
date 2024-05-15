@@ -94,10 +94,10 @@ Right click on 'weather' database, for example, and select "Query tool"
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/fb834a71-ba81-4a49-87fc-eb45ace34ca7)
 
-Create Users table for both databases
+Create User table for both databases
 
 ```sql
-CREATE TABLE IF NOT EXISTS Users (
+CREATE TABLE IF NOT EXISTS User (
     Id UUID PRIMARY KEY,
     Firstname VARCHAR(100),
     Lastname VARCHAR(100),
@@ -110,6 +110,23 @@ CREATE TABLE IF NOT EXISTS Users (
     LivingCountry VARCHAR(100),
     CitizenCountry VARCHAR(100)
 );
+```
+
+Create Country table for both databases
+
+```sql
+CREATE TABLE IF NOT EXISTS Country (
+    id UUID PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    code VARCHAR(100) NOT NULL
+);
+```
+
+Insert data for Malta into the Country table for both databases
+
+```sql
+INSERT INTO Country (id, name, code)
+VALUES ('f0475374-cc4f-4a8c-a6ac-8e2486e9512c', 'Malta', 'MLT');
 ```
 
 ## Swagger test
@@ -194,7 +211,7 @@ Replace appSettings url for testing the circuit breaker
 
 - Added GlobalErrorHandlerMiddleware. If there is no try catch to handle an exception, the global error handler will handle the issue. 
 
-Example below when the application tried to insert a new row in Users table.
+Example below when the application tried to insert a new row in User table.
 
 ```json
 {
