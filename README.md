@@ -242,11 +242,11 @@ Example below when the application tried to insert a new row in User table.
 
 - It is saving database docker volume in folder "C:\dockervolumes\postgresql". I didn't test in a different OS other than Windows.
 
-- The documentation mentions no need to generate salt. "his implementation on hashing will generate a salt automatically for you"
-
-- Database Enrichment: It was added historical weather.
+- The documentation mentions no need to generate salt. "This implementation on hashing will generate a salt automatically for you"
 
 https://github.com/BcryptNet/bcrypt.net
+
+- Database Enrichment: It was added historical weather.
 
 ## Improvements
 
