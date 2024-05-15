@@ -8,6 +8,7 @@ public static class NativeDependencyInjector
         services.AddScoped<IWeatherService, WeatherService>();
 
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IWeatherRepository, WeatherRepository>();
 
         RegisterRedisCacheService.Register(services, appConfig.RedisCacheConfig);
 

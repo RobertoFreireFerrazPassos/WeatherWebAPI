@@ -94,7 +94,7 @@ Right click on 'weather' database, for example, and select "Query tool"
 
 ![image](https://github.com/RobertoFreireFerrazPassos/WeatherWebAPI/assets/41349878/fb834a71-ba81-4a49-87fc-eb45ace34ca7)
 
-Create User table for both databases
+Create User table
 
 ```sql
 CREATE TABLE IF NOT EXISTS UserRegistration (
@@ -112,22 +112,43 @@ CREATE TABLE IF NOT EXISTS UserRegistration (
 );
 ```
 
-Create Country table for both databases
+Create Weather table 
 
 ```sql
-CREATE TABLE IF NOT EXISTS Country (
+CREATE TABLE Weather (
     id UUID PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    code VARCHAR(100) NOT NULL
+    countrycode VARCHAR(100) NOT NULL,
+    description VARCHAR(255),
+    temperature VARCHAR(50),
+    humidity VARCHAR(50),
+    time TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
 ```
 
-Insert data for Malta into the Country table for both databases
+Insert data for Malta into the Weather table
 
 ```sql
-INSERT INTO Country (id, name, code)
-VALUES ('f0475374-cc4f-4a8c-a6ac-8e2486e9512c', 'Malta', 'MLT');
+INSERT INTO Weather (id, countrycode, description, temperature, humidity, time)
+VALUES 
+(
+    'a4e7cbf2-550e-4f79-b8d6-dac51d60d4c2', 
+    'MLT', 
+    'clear sky',
+    '295.27', 
+    '68',
+    '2024-05-16 08:38:05' 
+),
+(
+    'a5e7cbf2-550e-4f79-b8d6-dac51d60d4c2', 
+    'MLT', 
+    'clear sky',
+    '293.20', 
+    '65',
+    '2024-05-15 08:38:05' 
+);
 ```
+
+Run all scripts for the integration test database as well.
 
 ## Swagger test
 
