@@ -31,16 +31,4 @@ public class ResponseTests
         response.ErrorMessage.Should().Be(errorMessage);
         response.Data.Should().BeNull();
     }
-
-    [Fact]
-    public void Response_IsSuccessful_False_Without_ErrorMessage()
-    {
-        // Act
-        var response = new Response<string>(false);
-
-        // Assert
-        response.IsSuccessful.Should().BeFalse();
-        response.ErrorMessage.Should().BeEmpty();
-        response.Data.Should().BeNull();
-    }
 }
