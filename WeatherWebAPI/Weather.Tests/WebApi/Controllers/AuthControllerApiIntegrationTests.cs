@@ -6,20 +6,7 @@ public class AuthControllerApiIntegrationTests : IClassFixture<WebApplicationFac
 
     public AuthControllerApiIntegrationTests(WebApplicationFactory<Program> factory)
     {
-        _factory = _factory = factory.WithWebHostBuilder(builder =>
-        {
-            builder.ConfigureAppConfiguration((context, config) =>
-            {
-                // Replace "YourConnectionString" with your actual connection string
-                config.AddJsonFile("appsettings.json")
-                      .AddJsonFile($"appsettings.{context.HostingEnvironment.EnvironmentName}.json", true)
-                      .AddEnvironmentVariables()
-                      .AddInMemoryCollection(new Dictionary<string, string>
-                      {
-                          ["Configuration:WeatherDb:ConnectionString"] = "Host=localhost; Port=8082; Database=weatherit; Username=simha; Password=Postgres2019!;"
-                      });
-            });
-        });
+        _factory = WebApplicationFactoryUtil.SetWebApplicationFactory(factory);
     }
 
     private async Task CleanDatabaseAsync()
@@ -27,7 +14,7 @@ public class AuthControllerApiIntegrationTests : IClassFixture<WebApplicationFac
         var dbConfigMock = new Mock<IOptions<DbConfig>>();
         dbConfigMock.Setup(m => m.Value).Returns(new DbConfig()
         {
-            ConnectionString = "Host=localhost; Port=8082; Database=weatherit; Username=simha; Password=Postgres2019!;"
+            ConnectionString = TestConstants.ConnectionString
         });
         var repository = new Repository(dbConfigMock.Object);
 

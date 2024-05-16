@@ -4,7 +4,7 @@ public class RepositoryIntegrationTests
 {
     private readonly DbConfig _intTestDbConfig = new DbConfig()
     {
-        ConnectionString = "Host=localhost; Port=8082; Database=weatherit; Username=simha; Password=Postgres2019!;"
+        ConnectionString = TestConstants.ConnectionString,
     };
 
     private readonly DbConfig _invalidIntTestDbConfig = new DbConfig()
