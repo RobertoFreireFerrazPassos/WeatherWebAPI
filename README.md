@@ -262,8 +262,6 @@ https://github.com/BcryptNet/bcrypt.net
 
 - Add a health check endpoint to test the health of all the dependencies: databases, external apis and redis.
 
-- Add more unit tests
-
 - Add logs in all catch blocks and, if necessary, also for not successful ResponseWithoutData and Response objects.
 
 - Secrets are hardcoded in appsettings, docker-compose and integration tests. It is a security issue. It should be moved to the CI/CD pipeline.

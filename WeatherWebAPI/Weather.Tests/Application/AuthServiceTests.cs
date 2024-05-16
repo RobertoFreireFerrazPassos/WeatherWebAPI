@@ -4,9 +4,9 @@ public class AuthServiceTests
 {
     private readonly IMapper _mapper;
 
-    private readonly Mock<ICountriesClient> _countriesClientMock;
+    private readonly Mock<ICountriesClient> _countriesClientMock = new Mock<ICountriesClient>();
 
-    private readonly Mock<IUserRepository> _userRepositoryMock;
+    private readonly Mock<IUserRepository> _userRepositoryMock = new Mock<IUserRepository>();
 
     public AuthServiceTests()
     {
@@ -15,9 +15,6 @@ public class AuthServiceTests
             cfg.AddProfile(new ConfigurationAppMapping());
         });
         _mapper = mockMapper.CreateMapper();
-
-        _countriesClientMock = new Mock<ICountriesClient>();
-        _userRepositoryMock = new Mock<IUserRepository>();
     }
 
 
