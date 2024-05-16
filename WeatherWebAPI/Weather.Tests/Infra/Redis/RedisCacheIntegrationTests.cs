@@ -17,8 +17,8 @@ public class RedisCacheIntegrationTests
 
         services.AddDistributedRedisCache(options =>
         {
-            options.Configuration = "localhost:6379";
-            options.InstanceName = "RedisCacheInstance";
+            options.Configuration = TestConstants.RedisConfiguration;
+            options.InstanceName = TestConstants.RedisInstanceName;
         });
 
         return services.BuildServiceProvider();
