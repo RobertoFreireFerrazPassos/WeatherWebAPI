@@ -195,6 +195,8 @@ Since this endpoint uses Basic Authorization, we don't need to pass /{username} 
 
 ## Weather.Tests project
 
+Run docker compose up first so all the containers are available to be test.
+
 Run tests using Visual studio.
 
 ### Unit tests
@@ -208,6 +210,12 @@ Example: AuthServiceTests
 Classes ending with "IntegrationTests"
 
 Example: RepositoryIntegrationTests
+
+### Api Integration tests
+
+Classes ending with "ApiIntegrationTests"
+
+Example: AuthControllerApiIntegrationTests
 
 ## Resilience/Fault tolerance tests
 
