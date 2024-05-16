@@ -40,7 +40,7 @@ public class AuthService : IAuthService
 
         if (!userFromDbResponse.IsSuccessful)
         {
-            return new Response<RegistrationResponse>(false, userFromDbResponse.ErrorMessage);
+            return new Response<RegistrationResponse>(userFromDbResponse.IsSuccessful, userFromDbResponse.ErrorMessage);
         }
 
         if (userFromDbResponse.Data is not null)
@@ -52,10 +52,10 @@ public class AuthService : IAuthService
 
         if (!createUserResponse.IsSuccessful)
         {
-            return new Response<RegistrationResponse>(false, createUserResponse.ErrorMessage);
+            return new Response<RegistrationResponse>(createUserResponse.IsSuccessful, createUserResponse.ErrorMessage);
         }
 
-        return new Response<RegistrationResponse>(countryResponse.IsSuccessful, data : new RegistrationResponse()
+        return new Response<RegistrationResponse>(true, data : new RegistrationResponse()
         {
             UserName = user.Username,
         });

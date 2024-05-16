@@ -23,17 +23,18 @@ public class AuthServiceTests
     {
         // Arrange
         var authService = new AuthService(_mapper, _countriesClientMock.Object, _userRepositoryMock.Object);
-
+        var location = "MLT";
+        var email = "user@example.com";
         var registrationDto = new RegistrationDto
         {
             Firstname = "Jack",
             Lastname = "Doe",
-            Email = "user@example.com",
+            Email = email,
             Password = "123456",
             Address = "Bastions Valletta VLT 193",
             Birthdate = new DateTime(2004,01,12),
             PhoneNumber = "+356 22915000",
-            LivingCountry = "MLT",
+            LivingCountry = location,
             CitizenCountry = "MLT"
         };
 
@@ -49,10 +50,8 @@ public class AuthServiceTests
             }
         });
 
-        _countriesClientMock.Setup(c => c.GetCountryAsync(It.IsAny<string>())).ReturnsAsync(countryResponse);
-
-        _userRepositoryMock.Setup(u => u.GetByEmailOrUserNameAsync(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync(new Response<UserEntity>(true));
-
+        _countriesClientMock.Setup(c => c.GetCountryAsync(location)).ReturnsAsync(countryResponse);
+        _userRepositoryMock.Setup(u => u.GetByEmailOrUserNameAsync(email, It.IsAny<string>())).ReturnsAsync(new Response<UserEntity>(true));
         _userRepositoryMock.Setup(u => u.CreateAsync(It.IsAny<UserEntity>())).ReturnsAsync(new ResponseWithoutData(true));
 
         // Act
@@ -65,12 +64,62 @@ public class AuthServiceTests
         response.Data.Should().NotBeNull();
         response.Data.UserName.Should().StartWith("jado");
 
-        _countriesClientMock.Verify(u => u.GetCountryAsync(It.IsAny<string>()), Times.Once);
-        _userRepositoryMock.Verify(u => u.GetByEmailOrUserNameAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+        _countriesClientMock.Verify(u => u.GetCountryAsync(location), Times.Once);
+        _userRepositoryMock.Verify(u => u.GetByEmailOrUserNameAsync(email, It.IsAny<string>()), Times.Once);
         _userRepositoryMock.Verify(u => u.CreateAsync(It.Is<UserEntity>(u =>
             u.Username.StartsWith("jado")
             && !string.IsNullOrWhiteSpace(u.PasswordHash)
         )), Times.Once);
+    }
+
+    [Fact]
+    public async Task When_InvalidPhoneNumber_RegisterUserAsync_Should_Return_ErrorMessage()
+    {
+        // Arrange
+        var authService = new AuthService(_mapper, _countriesClientMock.Object, _userRepositoryMock.Object);
+        var location = "MLT";
+        var email = "user@example.com";
+        var registrationDto = new RegistrationDto
+        {
+            Firstname = "Jack",
+            Lastname = "Doe",
+            Email = email,
+            Password = "123456",
+            Address = "Bastions Valletta VLT 193",
+            Birthdate = new DateTime(2004, 01, 12),
+            PhoneNumber = "+356 22915000",
+            LivingCountry = location,
+            CitizenCountry = "MLT"
+        };
+
+        var countryResponse = new Response<List<CountryDto>>(true, data: new List<CountryDto>
+        {
+            new CountryDto
+            {
+                Idd = new IddDto
+                {
+                    Root = "+1",
+                    Suffixes = new string[] { "56", "456" }
+                }
+            }
+        });
+
+        _countriesClientMock.Setup(c => c.GetCountryAsync(location)).ReturnsAsync(countryResponse);
+        _userRepositoryMock.Setup(u => u.GetByEmailOrUserNameAsync(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync(new Response<UserEntity>(true));
+        _userRepositoryMock.Setup(u => u.CreateAsync(It.IsAny<UserEntity>())).ReturnsAsync(new ResponseWithoutData(true));
+
+        // Act
+        var response = await authService.RegisterUserAsync(registrationDto);
+
+        // Assert
+        response.Should().NotBeNull();
+        response.IsSuccessful.Should().BeFalse();
+        response.ErrorMessage.Should().Be("Phone number is not valid for the user living country");
+        response.Data.Should().BeNull();
+
+        _countriesClientMock.Verify(u => u.GetCountryAsync(location), Times.Once);
+        _userRepositoryMock.Verify(u => u.GetByEmailOrUserNameAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+        _userRepositoryMock.Verify(u => u.CreateAsync(It.IsAny<UserEntity>()), Times.Never);
     }
 }
 
