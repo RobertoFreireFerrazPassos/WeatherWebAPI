@@ -26,8 +26,6 @@ public class BaseHttpClient
                 {
                     return new Response<T>(true, data: result);
                 }
-
-                return new Response<T>(false, "Error during deserialization");
             }
 
             return new Response<T>(false, "Error during request");
