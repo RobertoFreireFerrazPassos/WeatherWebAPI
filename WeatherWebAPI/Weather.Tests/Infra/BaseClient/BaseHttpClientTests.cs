@@ -22,6 +22,23 @@ public class BaseHttpClientTests
         response.Data.Key.Should().Be(expectedValue);
     }
 
+    [Fact]
+    public async Task GetAsync_InvalidResponse_ReturnsErrorMessage()
+    {
+        // Arrange
+        var path = "/api/weather/123";
+        var httpClient = FakeHttpClient.GenerateFakeHttpClient(string.Empty, HttpStatusCode.BadRequest);
+        var baseHttpClient = new BaseHttpClient(httpClient);
+
+        // Act
+        var response = await baseHttpClient.GetAsync<DataForRequest>(path);
+
+        // Assert
+        response.IsSuccessful.Should().BeFalse();
+        response.ErrorMessage.Should().Be("Error during request");
+        response.Data.Should().BeNull();
+    }
+
     private class DataForRequest
     {
         public string Key { get; set; }
