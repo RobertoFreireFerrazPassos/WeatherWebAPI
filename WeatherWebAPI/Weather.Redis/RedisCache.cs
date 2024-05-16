@@ -32,7 +32,7 @@ public class RedisCache : ICache
     {
         try
         {
-            await _database.SetStringAsync (key, value, _options);
+            await _database.SetStringAsync(key, value, _options);
         }
         catch (Exception ex)
         {
