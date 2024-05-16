@@ -15,7 +15,7 @@ public class RedisCache : ICache
          };
     }
 
-    public async Task<string> Get(string key)
+    public async Task<string> GetAsync(string key)
     {
         try
         {
@@ -28,7 +28,7 @@ public class RedisCache : ICache
         }
     }
 
-    public async Task Set(string key, string value)
+    public async Task SetAsync(string key, string value)
     {
         try
         {

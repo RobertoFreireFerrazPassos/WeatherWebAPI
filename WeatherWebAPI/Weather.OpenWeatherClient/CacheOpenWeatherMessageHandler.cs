@@ -14,7 +14,7 @@ public class CacheOpenWeatherMessageHandler : DelegatingHandler
         var latKey = query[OpenWeatherConstants.LatCodeParameter];
         var lngKey = query[OpenWeatherConstants.LngCodeParameter];
         var cacheKey = OpenWeatherConstants.CacheKey + latKey + lngKey;
-        var cacheResponse = await _cache.Get(cacheKey);
+        var cacheResponse = await _cache.GetAsync(cacheKey);
 
         if (string.IsNullOrWhiteSpace(cacheResponse))
         {
@@ -24,7 +24,7 @@ public class CacheOpenWeatherMessageHandler : DelegatingHandler
             {
                 var responseAsSring = await response.Content.ReadAsStringAsync();
 
-                await _cache.Set(cacheKey, responseAsSring);
+                await _cache.SetAsync(cacheKey, responseAsSring);
             }
 
             return response;
