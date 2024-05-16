@@ -77,6 +77,18 @@ public class AuthControllerApiIntegrationTests : IClassFixture<WebApplicationFac
     [InlineData("Firstname","", "First name is required")]
     [InlineData("Firstname", "1","First name can not be shorter than 2 characters")]
     [InlineData("Firstname", "jashdkjashdkajshdjkashdjkahsjkdhasjkdhajkshdjkahdkajsdhkadjashjkadhskajhdkjashdkajshdjka", "First name can not be longer than 30 characters")]
+    [InlineData("Lastname", "", "Last name is required")]
+    [InlineData("Lastname", "1", "Last name can not be shorter than 2 characters")]
+    [InlineData("Lastname", "jashdkjashdkajshdjkashdjkahsjkdhasjkdhajkshdjkahdkajsdhkadjashjkadhskajhdkjashdkajshdjkajashdkjashdkajshdjkashdjkahsjkdhasjkdhajkshdjkahdkajsdhkadjashjkadhskajhdkjashdkajshdjkajashdkjashdkajshdjkashdjkahsjkdhasjkdhajkshdjkahdkajsdhkadjashjkadhskajhdkjashdkajshdjka", "Last name can not be longer than 100 characters")]
+    [InlineData("Email", "", "Email is required")]
+    [InlineData("Email", "invalidEmail", "Email is invalid")]
+    [InlineData("Password", "", "Password is required")]
+    [InlineData("Password", "12345", "Password can not be shorter than 6 characters")]
+    [InlineData("Password", "passwordpasswordpasswordpassword", "Password can not be longer than 20 characters")]
+    [InlineData("PhoneNumber", "", "Phone number is required")]
+    [InlineData("PhoneNumber", "12345", "Phone number can not be shorter than 6 characters")]
+    [InlineData("LivingCountry", "", "Living country is required")]
+    [InlineData("CitizenCountry", "", "Citizen country is required")]
     public async Task When_InvalidRequest_RegisterEndpoint_Should_ReturnErrorMessage(string propertyName, string propertyValue, string errorMessage)
     {
         // Arrange

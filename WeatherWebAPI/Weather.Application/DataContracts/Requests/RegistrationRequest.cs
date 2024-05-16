@@ -7,9 +7,9 @@ public class RegistrationRequest
     [MaxLength(30, ErrorMessage = "First name can not be longer than 30 characters")]
     public string Firstname { get; set; }
 
-    [Required(ErrorMessage = "First name is required")]
-    [MinLength(2, ErrorMessage = "First name can not be shorter than 2 characters")]
-    [MaxLength(100, ErrorMessage = "First name can not be longer than 100 characters")]
+    [Required(ErrorMessage = "Last name is required")]
+    [MinLength(2, ErrorMessage = "Last name can not be shorter than 2 characters")]
+    [MaxLength(100, ErrorMessage = "Last name can not be longer than 100 characters")]
     public string Lastname { get; set; }
 
     [Required(ErrorMessage = "Email is required")]
@@ -23,7 +23,7 @@ public class RegistrationRequest
 
     public string Address { get; set; }
 
-    [Required(ErrorMessage = "Email is required")]
+    [Required(ErrorMessage = "Birthdate is required")]
     [DataType(DataType.Date, ErrorMessage = "Birthdate is invalid")]
     public DateTime Birthdate { get; set; }
 
