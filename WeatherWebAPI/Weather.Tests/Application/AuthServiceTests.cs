@@ -121,5 +121,55 @@ public class AuthServiceTests
         _userRepositoryMock.Verify(u => u.GetByEmailOrUserNameAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
         _userRepositoryMock.Verify(u => u.CreateAsync(It.IsAny<UserEntity>()), Times.Never);
     }
+
+    [Fact]
+    public async Task When_SameUser_RegisterUserAsync_Should_Return_ErrorMessage()
+    {
+        // Arrange
+        var authService = new AuthService(_mapper, _countriesClientMock.Object, _userRepositoryMock.Object);
+        var location = "MLT";
+        var email = "user@example.com";
+        var registrationDto = new RegistrationDto
+        {
+            Firstname = "Jack",
+            Lastname = "Doe",
+            Email = email,
+            Password = "123456",
+            Address = "Bastions Valletta VLT 193",
+            Birthdate = new DateTime(2004, 01, 12),
+            PhoneNumber = "+356 22915000",
+            LivingCountry = location,
+            CitizenCountry = "MLT"
+        };
+
+        var countryResponse = new Response<List<CountryDto>>(true, data: new List<CountryDto>
+        {
+            new CountryDto
+            {
+                Idd = new IddDto
+                {
+                    Root = "+3",
+                    Suffixes = new string[] { "56", "456" }
+                }
+            }
+        });
+        var userRepositoryResponse = new Response<UserEntity>(true, data : new UserEntity() { Firstname = "Firstname" });
+        _countriesClientMock.Setup(c => c.GetCountryAsync(location)).ReturnsAsync(countryResponse);
+        _userRepositoryMock.Setup(u => u.GetByEmailOrUserNameAsync(email, It.IsAny<string>())).ReturnsAsync(userRepositoryResponse);
+        _userRepositoryMock.Setup(u => u.CreateAsync(It.IsAny<UserEntity>())).ReturnsAsync(new ResponseWithoutData(true));
+        
+        // Act
+        var response = await authService.RegisterUserAsync(registrationDto);
+
+        // Assert
+        response.Should().NotBeNull();
+        response.IsSuccessful.Should().BeFalse();
+        response.ErrorMessage.Should().Be("A user with same email or username already exists");
+        response.Data.Should().BeNull();
+
+        _countriesClientMock.Verify(u => u.GetCountryAsync(location), Times.Once);
+        _userRepositoryMock.Verify(u => u.GetByEmailOrUserNameAsync(email, It.IsAny<string>()), Times.Once);
+        _userRepositoryMock.Verify(u => u.CreateAsync(It.IsAny<UserEntity>()), Times.Never);
+    }
 }
 
