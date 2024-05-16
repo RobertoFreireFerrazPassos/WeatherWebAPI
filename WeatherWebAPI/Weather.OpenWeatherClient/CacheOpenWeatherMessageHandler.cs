@@ -1,10 +1,10 @@
 ﻿namespace Weather.OpenWeatherClient;
 
-public class OpenWeatherMessageHandler : DelegatingHandler
+public class CacheOpenWeatherMessageHandler : DelegatingHandler
 {
     private readonly ICache _cache;
 
-    public OpenWeatherMessageHandler(ICache cache)
+    public CacheOpenWeatherMessageHandler(ICache cache)
     {
         _cache = cache;
     }
