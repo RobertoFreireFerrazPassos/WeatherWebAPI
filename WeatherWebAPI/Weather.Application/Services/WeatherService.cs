@@ -32,7 +32,7 @@ public class WeatherService : IWeatherService
 
         if (!userFromDbResponse.IsSuccessful)
         {
-            return new Response<UserWeatherResponse>(false, userFromDbResponse.ErrorMessage);
+            return new Response<UserWeatherResponse>(userFromDbResponse.IsSuccessful, userFromDbResponse.ErrorMessage);
         }
 
         var location = userFromDbResponse.Data?.GetLocation();
