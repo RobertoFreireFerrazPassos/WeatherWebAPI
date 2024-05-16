@@ -195,7 +195,7 @@ Since this endpoint uses Basic Authorization, we don't need to pass /{username} 
 
 ## Weather.Tests project
 
-Run docker compose up first so all the containers are available to be test.
+Make sure that all the containers are available to be tested.
 
 Run tests using Visual studio.
 
