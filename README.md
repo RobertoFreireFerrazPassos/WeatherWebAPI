@@ -256,6 +256,8 @@ https://github.com/BcryptNet/bcrypt.net
 
 - Database Enrichment: It was added historical weather.
 
+- When historical weather database request fails, it is returning an unsuccessful response. Maybe, we can ignore and leave historical weather as optional data for this case.
+
 - We are using objects Response and ResponseWithoutData as a simple version of Operation Result "Pattern".
 
 ## To do next
