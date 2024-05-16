@@ -39,24 +39,29 @@ public class AuthControllerApiIntegrationTests : IClassFixture<WebApplicationFac
         await repository.ExecuteAsync(sql, new { });
     }
 
-    [Fact]
-    public async Task RegisterEndpoint_Should_ReturnSuccessAndCorrectContentType()
+    private RegistrationRequest GetRegistrationRequest()
     {
-        // Arrange
-        await CleanDatabaseAsync();
-
-        var input = new RegistrationRequest()
+        return new RegistrationRequest()
         {
             Firstname = "Jack",
             Lastname = "Doe",
             Email = "userTeste123@example.com",
             Password = "123456",
             Address = "Bastions Valletta VLT 193",
-            Birthdate = new DateTime(2004,01,12),
+            Birthdate = new DateTime(2004, 01, 12),
             PhoneNumber = "+356 22915000",
             LivingCountry = "MLT",
             CitizenCountry = "MLT"
         };
+    }
+
+    [Fact]
+    public async Task RegisterEndpoint_Should_ReturnSuccessAndCorrectContentType()
+    {
+        // Arrange
+        await CleanDatabaseAsync();
+
+        var input = GetRegistrationRequest();
         var request = new StringContent(JsonConvert.SerializeObject(input), Encoding.UTF8, "application/json");
         var client = _factory.CreateClient();
 
@@ -66,5 +71,35 @@ public class AuthControllerApiIntegrationTests : IClassFixture<WebApplicationFac
         // Assert
         response.EnsureSuccessStatusCode();
         response.Content.Headers.ContentType.ToString().Should().Be("application/json; charset=utf-8");
+    }
+
+    [Theory]
+    [InlineData("Firstname","", "First name is required")]
+    [InlineData("Firstname", "1","First name can not be shorter than 2 characters")]
+    [InlineData("Firstname", "jashdkjashdkajshdjkashdjkahsjkdhasjkdhajkshdjkahdkajsdhkadjashjkadhskajhdkjashdkajshdjka", "First name can not be longer than 30 characters")]
+    public async Task When_InvalidRequest_RegisterEndpoint_Should_ReturnErrorMessage(string propertyName, string propertyValue, string errorMessage)
+    {
+        // Arrange
+        await CleanDatabaseAsync();
+
+        var input = GetRegistrationRequest();
+        var propertyInfo = typeof(RegistrationRequest).GetProperty(propertyName);
+        propertyInfo.SetValue(input, propertyValue);
+        var request = new StringContent(JsonConvert.SerializeObject(input), Encoding.UTF8, "application/json");
+        var client = _factory.CreateClient();
+
+        // Act
+        var response = await client.PostAsync("/api/registration", request);
+
+        // Assert
+        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+
+        var responseBody = await response.Content.ReadAsStringAsync();
+        var responseObj = JsonConvert.DeserializeObject<ValidationErrorResponse>(responseBody);
+
+        responseObj.Should().NotBeNull();
+        responseObj.Errors.Should().NotBeNull();
+        responseObj.Errors.Should().ContainKey(propertyName);
+        responseObj.Errors[propertyName].Should().Contain(errorMessage);
     }
 }
