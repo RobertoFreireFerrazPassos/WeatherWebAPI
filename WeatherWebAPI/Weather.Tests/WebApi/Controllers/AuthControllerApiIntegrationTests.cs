@@ -1,11 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.Configuration;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
-using Newtonsoft.Json;
-using System.Text;
-using Weather.Application.DataContracts.Requests;
-
-namespace Weather.Tests.WebApi.Controllers;
+﻿namespace Weather.Tests.WebApi.Controllers;
 
 public class AuthControllerApiIntegrationTests : IClassFixture<WebApplicationFactory<Program>>
 {
@@ -29,15 +22,34 @@ public class AuthControllerApiIntegrationTests : IClassFixture<WebApplicationFac
         });
     }
 
+    private async Task CleanDatabaseAsync()
+    {
+        var dbConfigMock = new Mock<IOptions<DbConfig>>();
+        dbConfigMock.Setup(m => m.Value).Returns(new DbConfig()
+        {
+            ConnectionString = "Host=localhost; Port=8082; Database=weatherit; Username=simha; Password=Postgres2019!;"
+        });
+        var repository = new Repository(dbConfigMock.Object);
+
+        var sql = @"
+            DELETE FROM UserRegistration
+            WHERE Email = 'userTeste123@example.com'; 
+        ";
+
+        await repository.ExecuteAsync(sql, new { });
+    }
+
     [Fact]
     public async Task RegisterEndpoint_Should_ReturnSuccessAndCorrectContentType()
     {
         // Arrange
+        await CleanDatabaseAsync();
+
         var input = new RegistrationRequest()
         {
             Firstname = "Jack",
             Lastname = "Doe",
-            Email = "user123@example.com",
+            Email = "userTeste123@example.com",
             Password = "123456",
             Address = "Bastions Valletta VLT 193",
             Birthdate = new DateTime(2004,01,12),
