@@ -262,8 +262,8 @@ https://github.com/BcryptNet/bcrypt.net
 
 ## To do next
 
-- Add a health check endpoint to test the health of all the dependencies: databases, external apis and redis.
-
 - Add logs in all catch blocks and, if necessary, also for not successful ResponseWithoutData and Response objects.
 
-- Secrets are hardcoded in appsettings, docker-compose and integration tests. It is a security issue. It should be moved to the CI/CD pipeline.
+- Review use of Response and ResponseWithoutData. Maybe use try catch instead or use OperationResult
+  
+- Review missing stack trace in global error and in Response and ResponseWithoutData
