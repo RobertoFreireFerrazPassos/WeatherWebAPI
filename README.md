@@ -260,20 +260,5 @@ https://github.com/BcryptNet/bcrypt.net
 
 ## To do next
 
-- Add logs in all catch blocks and, if necessary, also for not successful ResponseWithoutData and Response objects.
-
-- Review use of Response and ResponseWithoutData. Maybe use try catch instead or use OperationResult
-  
-- Review missing stack trace in global error and in Response and ResponseWithoutData
-
-- Implement Clean-Architecture
-
 - Use Ef core
-
-### Exception handling web api dotnet
-- Middleware	-> Global exception handling
-- Developer Exception Page -> Development error diagnostics
-- Try-Catch	-> Localized, specific error handling
-- ApiController + Validation -> Automatic model validation
-- ProblemDetails -> Standardized error responses
-- Filters (IExceptionFilter) -> Reusable error handling logic per controller
+- Review Exception handling
