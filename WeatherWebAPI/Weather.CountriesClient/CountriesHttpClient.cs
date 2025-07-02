@@ -6,7 +6,7 @@ public class CountriesHttpClient : BaseHttpClient, ICountriesClient
     {
     }
 
-    public async Task<Response<List<CountryDto>>> GetCountryAsync(string countryCode)
+    public async Task<List<CountryDto>> GetCountryAsync(string countryCode)
     {
         return await GetAsync<List<CountryDto>>($"?{CountriesClientConstants.CountryCodeParameter}={countryCode}");
     }

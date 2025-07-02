@@ -1,15 +1,8 @@
 ﻿namespace Weather.BaseClient;
 
-public class BaseHttpClient
+public class BaseHttpClient(HttpClient _httpClient)
 {
-    private readonly HttpClient _httpClient;
-
-    public BaseHttpClient(HttpClient httpClient)
-    {
-        _httpClient = httpClient;
-    }
-
-    public async Task<Response<T>> GetAsync<T>(string path)
+    public async Task<T> GetAsync<T>(string path)
     {
         try
         {
@@ -21,18 +14,14 @@ public class BaseHttpClient
             {
                 var json = await response.Content.ReadAsStringAsync();
                 var result = JsonSerializer.Deserialize<T>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                if (result is not null)
-                {
-                    return new Response<T>(true, data: result);
-                }
+                return result;
             }
 
-            return new Response<T>(false, "Error during request");
+            throw new Exception("Request failed");
         }
         catch (Exception ex)
         {
-            return new Response<T>(false, "Exception during request");
+            throw new Exception("Exception during request");
         }
     }
 }

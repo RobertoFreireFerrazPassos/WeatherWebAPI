@@ -258,8 +258,6 @@ https://github.com/BcryptNet/bcrypt.net
 
 - When historical weather database request fails, it is returning an unsuccessful response. Maybe, we can ignore and leave historical weather as optional data for this case.
 
-- We are using objects Response and ResponseWithoutData as a simple version of Operation Result "Pattern".
-
 ## To do next
 
 - Add logs in all catch blocks and, if necessary, also for not successful ResponseWithoutData and Response objects.
@@ -267,3 +265,15 @@ https://github.com/BcryptNet/bcrypt.net
 - Review use of Response and ResponseWithoutData. Maybe use try catch instead or use OperationResult
   
 - Review missing stack trace in global error and in Response and ResponseWithoutData
+
+- Implement Clean-Architecture
+
+- Use Ef core
+
+### Exception handling web api dotnet
+- Middleware	-> Global exception handling
+- Developer Exception Page -> Development error diagnostics
+- Try-Catch	-> Localized, specific error handling
+- ApiController + Validation -> Automatic model validation
+- ProblemDetails -> Standardized error responses
+- Filters (IExceptionFilter) -> Reusable error handling logic per controller

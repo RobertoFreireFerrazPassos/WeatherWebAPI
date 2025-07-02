@@ -9,7 +9,7 @@ public class OpenWeatherHttpClient : BaseHttpClient, IWeatherClient
         _appId = apiConfig.Value.Key;
     }
 
-    public async Task<Response<CityWeatherDto>> GetWeatherAsync(double lat, double lon)
+    public async Task<CityWeatherDto> GetWeatherAsync(double lat, double lon)
     {
         return await GetAsync<CityWeatherDto>($"?{OpenWeatherConstants.LatCodeParameter}={lat}&{OpenWeatherConstants.LngCodeParameter}={lon}&APPID={_appId}");
     }

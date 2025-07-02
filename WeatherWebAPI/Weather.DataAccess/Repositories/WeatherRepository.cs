@@ -6,7 +6,7 @@ public class WeatherRepository : Repository, IWeatherRepository
     {
     }
 
-    public async Task<Response<IEnumerable<WeatherEntity>>> GetByCountryCodeAsync(string countryCode)
+    public async Task<IEnumerable<WeatherEntity>> GetByCountryCodeAsync(string countryCode)
     {
         var sql = $@"
             SELECT Id, CountryCode, Description, Temperature, Humidity, Time FROM Weather 

@@ -4,15 +4,14 @@ public static class NativeDependencyInjector
 {
     public static void RegisterServices(this IServiceCollection services, AppConfig appConfig)
     {
-        services.AddScoped<IAuthService,AuthService>();
+        services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IWeatherService, WeatherService>();
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IWeatherRepository, WeatherRepository>();
 
+        RegisterSecuritiesServices.Register(services);
         RegisterRedisCacheService.Register(services, appConfig.RedisCacheConfig);
-
-        services.AddAutoMapper(typeof(ConfigurationAppMapping));
 
         services.AddScoped<CacheCountriesMessageHandler>();
         services.AddHttpClient<ICountriesClient, CountriesHttpClient>()

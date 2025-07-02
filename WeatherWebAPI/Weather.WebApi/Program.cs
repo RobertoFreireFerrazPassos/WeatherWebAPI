@@ -31,12 +31,16 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.Configure<RedisCacheConfig>(builder.Configuration.GetSection("Configuration:RedisCacheConfig"));
 builder.Services.Configure<DbConfig>(builder.Configuration.GetSection("Configuration:WeatherDb"));
 builder.Services.Configure<ApiConfig>(builder.Configuration.GetSection("Configuration:OpenWeather"));
+
+builder.Services.AddAutoMapper(typeof(ConfigurationAppMapping));
 builder.Services.RegisterServices(builder.Configuration.GetSection("Configuration").Get<AppConfig>());
 
 builder.Services.AddAuthentication("BasicAuthentication")
     .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -45,12 +49,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseMiddleware<GlobalErrorHandlerMiddleware>();
-
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
-
-public partial class Program { }

@@ -6,23 +6,23 @@ public class UserRepository : Repository, IUserRepository
     {
     }
 
-    public async Task<Response<IEnumerable<UserEntity>>> GetAllAsync()
+    public async Task<IEnumerable<UserEntity>> GetAllAsync()
     {
         var sql = @"SELECT * FROM UserRegistration";
         return await QueryAsync<UserEntity>(sql);
     }
 
-    public async Task<ResponseWithoutData> CreateAsync(UserEntity user)
+    public async Task CreateAsync(UserEntity user)
     {
         user.Id = Guid.NewGuid();
         var sql = @"
             INSERT INTO UserRegistration (Id, Firstname, Lastname, Username, Email, PasswordHash, Address, Birthdate, PhoneNumber, LivingCountry, CitizenCountry)
             VALUES (@Id, @Firstname, @Lastname, @Username, @Email, @PasswordHash, @Address, @Birthdate, @PhoneNumber, @LivingCountry, @CitizenCountry)
         ";
-        return await ExecuteAsync(sql, user);
+        await ExecuteAsync(sql, user);
     }
 
-    public async Task<Response<UserEntity>> GetByEmailOrUserNameAsync(string email, string userName)
+    public async Task<UserEntity> GetByEmailOrUserNameAsync(string email, string userName)
     {
         var sql = @"
             SELECT Id, Firstname, Lastname, Username, Email, PasswordHash, Address, Birthdate, PhoneNumber, LivingCountry, CitizenCountry FROM UserRegistration 

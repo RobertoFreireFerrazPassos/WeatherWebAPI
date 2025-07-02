@@ -21,6 +21,7 @@
     <ProjectReference Include="..\Weather.DataAccess\Weather.DataAccess.csproj" />
     <ProjectReference Include="..\Weather.OpenWeatherClient\Weather.OpenWeatherClient.csproj" />
     <ProjectReference Include="..\Weather.Redis\Weather.Redis.csproj" />
+    <ProjectReference Include="..\Weather.Security\Weather.Security.csproj" />
   </ItemGroup>
 
 </Project>

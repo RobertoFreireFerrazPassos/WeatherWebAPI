@@ -4,6 +4,6 @@ global using System.Web;
 
 global using Weather.BaseClient;
 
-global using Weather.Domain.Cache;
-global using Weather.Domain.Clients;
-global using Weather.Domain.Dtos;
+global using Weather.Application.Dtos;
+global using Weather.Application.Interfaces.Clients;
+global using Weather.Application.Interfaces.Cache;

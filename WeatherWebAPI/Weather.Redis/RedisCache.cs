@@ -17,27 +17,11 @@ public class RedisCache : ICache
 
     public async Task<string> GetAsync(string key)
     {
-        try
-        {
-            return await _database.GetStringAsync(key);
-        }
-        catch (Exception ex)
-        {
-            //LogError
-            return string.Empty;
-        }
+        return await _database.GetStringAsync(key);
     }
 
     public async Task SetAsync(string key, string value)
     {
-        try
-        {
-            await _database.SetStringAsync(key, value, _options);
-        }
-        catch (Exception ex)
-        {
-            //LogError
-            return;
-        }
+        await _database.SetStringAsync(key, value, _options);
     }
 }
