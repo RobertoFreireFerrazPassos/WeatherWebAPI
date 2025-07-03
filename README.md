@@ -258,7 +258,13 @@ https://github.com/BcryptNet/bcrypt.net
 
 - When historical weather database request fails, it is returning an unsuccessful response. Maybe, we can ignore and leave historical weather as optional data for this case.
 
-## To do next
+## TO DO: Use Ef core
 
-- Use Ef core
-- Review Exception handling
+## TO DO: Review Exception handling
+
+## TO DO: Resilience:
+
+- Retries: Retry requests that fail due to transient errors.
+- Timeouts: Cancel requests that exceed a specified time limit.
+- Fallbacks: Define alternative actions or results for failed operations.
+- Circuit Breakers: Temporarily suspend communication with unavailable services.
